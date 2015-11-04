@@ -1,0 +1,1165 @@
+
+<!-- SEC: TORNEO PRINCIPAL -->
+<div id="sec_torneoPrincipal" class="seccion">
+
+    <div class="contenedor_sec torneo_principal torneo_info_inside">
+
+	    <div class="titulo wow fadeInDown">
+
+	      	<h2 class="en_color_principal sombra_blanco_gris">
+	        	
+	        	<i class="icon-copa"></i>Próximo Torneo
+
+	        	<small class="label_region">en {{summary.name}}</small>
+	      	
+	      	</h2>
+	    
+	    </div>
+
+	    <div class="ver_mas wow bounceInRight entrada-1s">
+
+	    	<a href="">
+
+	    		<h3><i class="fa fa-caret-right"></i>ver todos los torneos</h3>
+	    	
+	    	</a>
+	    	
+	    </div>
+
+    	<div class="row wow fadeInLeftBig">
+
+    		<div class="col-sm-12 col-md-5">
+    			
+    			<img ng-src="http://images.collab-dev.com/190x/smart/slam/{{summary.next_competition.cover_photo}}">
+
+    			<div class="ver_mas izq"><a href=""><h3><i class="fa fa-caret-right"></i>ver más</h3></a></div>
+
+    		</div>
+
+    		<div class="col-xs-12 col-sm-6 col-md-3">
+
+    			<a href="">
+
+    				<h4 class="torneo_nombre">{{summary.next_competition.title}}</h4>
+
+    			</a>
+
+    			<div class="torneo_fecha">
+
+					<span class="icon-box" ><i class="fa fa-clock-o"></i></span>
+				
+					<span class="num">23</span> 
+				
+					<span class="mes">SEP</span>
+
+					<span class="linea">|</span> 
+
+					<span class="hora">23:00</span>
+				
+				</div>
+
+				<div class="torneo_lugar">
+				
+					<span class="icon-box" ><i class="fa fa-map-marker"></i></span>
+
+					<span class="lugar-nombre">{{summary.next_competition.place}}</span>
+
+					<span class="direccion"><a href="">{{summary.next_competition.location.formatted_address}}</a></span>
+
+				</div>
+
+        		<div class="data-box featured">
+
+        			<span class="icon-box"><i class="icon-jugador"></i></span>
+
+        			<h4><small>JUGADORES</small>CUPOS</h4>
+
+        			<p><small>+{{summary.next_competition.participants.length || 0}}</small>+{{summary.next_competition.users_amount - summary.next_competition.participants.length}}</p>
+				
+				</div>
+
+				<a style="visibility: visible; animation-name: bounceInRight;" class="wow bounceInRight btn btn_principal animated entrada-1s animated" href="#about_menu" role="button">PARTICIPAR</a>
+
+				<div class="mini_gap"></div>
+
+    		</div>
+
+    		<div class="col-xs-12 col-sm-6 col-md-4 torneo_descripcion">
+    			<p>
+                    {{summary.next_competition.description}}
+    			</p>
+    		</div>
+    		
+    	</div>    	
+
+    </div>
+
+</div>
+
+<!-- SEC: TORNEOS ANTERIORES -->
+<div id="sec_torneosAnteriores" class="seccion fondo_gris">
+
+    <div class="contenedor_sec torneo_info_inside wow fadeInLeftBig">
+
+	    <div class="titulo wow fadeInDown">
+
+	      	<h2 class="sombra_gris_blanco">
+	        	
+	        	<i class="icon-copa"></i>Torneos Anteriores
+
+	        	<small class="label_region">en {{summary.name}}</small>
+	      	
+	      	</h2>
+	    
+	    </div>
+
+	    <div class="ver_mas wow bounceInRight entrada-1s">
+
+	    	<a href="">
+
+	    		<h3><i class="fa fa-caret-right"></i>ver todos los torneos</h3>
+	    	
+	    	</a>
+	    	
+	    </div>
+
+    	<div class="row">
+
+    		<div class="col-xs-10 col-sm-5 col-md-4" ng-repeat="past in past_competitions">
+
+    			<a href="/torneo" class="no_opacity_hover">
+
+    			<div class="tarjeta_torneo torneo_info_inside" fecha="25 JUL">
+                 	
+                    <h4 class="torneo_nombre">{{past.title}}</h4>
+
+                	<div class="torneo_resumen">
+
+                		<div class="data-box">
+
+		        			<span class="icon-box"><i class="icon-jugador"></i></span>
+
+		        			<h4>JUGADORES</h4>
+
+		        			<p>+{{past.participants.length || 0}}</p>
+						
+						</div>
+
+                		<div class="data-box">
+
+		        			<span class="icon-box"><i class="icon-video"></i></span>
+
+		        			<h4>VIDEOS</h4>
+
+		        			<p>+{{past.videos.length || 0}}</p>
+						
+						</div>
+
+                		<!--div class="data-box">
+
+		        			<span class="icon-box"><i class="fa fa-camera"></i></span>
+
+		        			<h4>FOTOS</h4>
+
+		        			<p>+12</p>
+						
+						</div>
+
+                		<div class="data-box">
+
+		        			<span class="icon-box"><i class="fa fa-comment-o"></i></span>
+
+		        			<h4>COMENTARIOS</h4>
+
+		        			<p>+12</p>
+						
+						</div-->
+
+                	</div>
+
+                	<div class="torneo_datos">
+
+                		<div class="torneo_fecha">
+
+							<span class="icon-box" ><i class="fa fa-clock-o"></i></span>
+
+							<span class="hora">23:00</span>
+						
+						</div>
+
+						<div class="torneo_lugar">
+						
+							<span class="icon-box" ><i class="fa fa-map-marker"></i></span>
+
+							<span class="lugar-nombre">{{past.place}}</span>
+
+							<span class="direccion">{{past.location.formatted_address}}</span>
+
+						</div>
+
+						<div class="torneo_hashtag">
+							
+							<span class="icon-box">#</span>
+
+							<span class="aclaracion">{{torneo.hashtag}}</span>
+
+						</div>
+
+                	</div>
+
+                	<div class="ver_mas"><h3><i class="fa fa-caret-right"></i>ver más</h3></div>
+
+            	</div>
+
+            	</a>
+	    	
+	    	</div>
+
+	
+	    </div>
+
+	    <div class="mini_gap"></div>
+
+	    <a style="visibility: visible; animation-name: fadeInLeft;" class="wow fadeInLeft btn eventime_button animated" href="#about_menu" role="button">VER TODOS</a>
+
+	    <div class="mini_gap"></div>
+	
+	</div>
+
+</div>
+
+
+<!-- SEC: ACERCA DE -->
+<div id="about_menu">
+		
+	<div class="clear"></div>
+
+	<div class="wow fadeIn tabs_about sec-fondo-oscuro">
+		    
+	    <div class="mask">
+
+	      	<ul class="menu_tabs" role="tablist">
+
+		        <li class="active">
+
+		        	<a class="wow fadeInDown btn eventime_button graybtn active" data-toggle="tab" role="button" data-target="#sectionA">
+		        		DATOS 
+		        	</a>
+
+		        </li>
+
+		        <li>
+
+		        	<a class="wow fadeInDown btn eventime_button graybtn" data-toggle="tab" role="button" data-target="#sectionB">
+		        		REGLAS 
+		        	</a>
+
+		        </li>
+
+		        <li>
+
+		        	<a class="wow fadeInDown btn eventime_button graybtn" data-toggle="tab" role="button" data-target="#sectionC">
+		        		ACERCA DE 
+		        	</a>
+
+		        </li>
+
+	      	</ul>
+
+			<div class="tab-content">
+
+		        <div id="sectionA" class="tab-pane fade in active">
+
+			        <ul class="stats">
+
+			            <li class="icon-jugador icono-6x">
+
+				            <p>
+				            	<span class="count">
+				              		{{summary.participants_count}}	
+				              	</span>
+				              	<span class="count_plus">
+				              		+ 
+				              	</span>
+				            </p>
+
+				            <p class="count_dscrp">
+				               participantes
+				            </p>
+
+			            </li>
+
+			            <li class="icon-copa icono-6x">
+
+				            <p>
+				              	<span class="count">
+				              		{{summary.competitions.length || 0}}	
+				              	</span>
+				              	<span class="count_plus">
+				              		+ 
+				              	</span>
+				            </p>
+
+				            <p class="count_dscrp">
+				               torneos
+				            </p>
+
+			            </li>
+
+			            <li class="fa fa-comment-o fa-6x">
+
+			            	<p>
+				            	<span class="count">
+				              		55 
+				              	</span>
+				              	<span class="count_plus">
+				              		+ 
+				              	</span>
+				            </p>
+
+				            <p class="count_dscrp">
+				               conversaciones
+				            </p>
+
+			            </li>
+
+			            <li class="icon-video icono-6x">
+
+				            <p>
+					            <span class="count">
+				              		{{summary.videos_count || 0}}	
+					            </span>
+					            <span class="count_plus">
+					            	+ 
+					            </span>
+				            </p>
+
+				            <p class="count_dscrp">
+				               videos
+				            </p>
+
+			            </li>
+
+			        </ul>
+
+		        </div>
+
+			    <div id="sectionB" class="tab-pane fade">
+			          <ul class="about_columns">
+			            <li class="list right">
+			            <h4>
+			            Design Education </h4>
+			            <div class="fa fa-star fa-1x">
+			            </div>
+			            <ol>
+			              <li>Design thinking: cognitive modes and learning styles</li>
+			              <li>Design approaches, strategies, methodologies and tactics</li>
+			              <li>Problem solving: recognition procedures, hypothesis developmen</li>
+			              <li>The meaning of innovation and creativity, in theory and practice</li>
+			            </ol>
+			            </li>
+			            <li class="list">
+			            <div class="fa fa-briefcase fa-1x">
+			            </div>
+			            <h4>
+			            Design in Society </h4>
+			            <ol>
+			              <li>Design in social policy, planning, and politics</li>
+			              <li>Health, safety, and public welfare in design practice</li>
+			              <li>Design as business</li>
+			              <li>Markets for design and designing for markets</li>
+			            </ol>
+			            </li>
+			            <li class="list right">
+			            <h4>
+			            Designed Objects </h4>
+			            <div class="fa fa-camera fa-1x">
+			            </div>
+			            <ol>
+			              <li>Fashion design and development</li>
+			              <li>Product design philosophy</li>
+			              <li>Industrial and Interior design</li>
+			              <li>Engineering and design</li>
+			            </ol>
+			            </li>
+			            <li class="list">
+			            <div class="fa fa-graduation-cap fa-1x">
+			            </div>
+			            <h4>
+			            Visual Design </h4>
+			            <ol>
+			              <li>Communications design</li>
+			              <li>Visual arts</li>
+			              <li>Typography</li>
+			              <li>Graphic design</li>
+			            </ol>
+			            </li>
+			            <li class="list right">
+			            <h4>
+			            Design Management </h4>
+			            <div class="fa fa-key fa-1x">
+			            </div>
+			            <ol>
+			              <li>People and artifacts: exploring uses and usability</li>
+			              <li>Participatory design systems</li>
+			              <li>Professional ethics</li>
+			              <li>Design knowledge management</li>
+			            </ol>
+			            </li>
+			            <li class="list ">
+			            <div class="fa fa-line-chart fa-1x">
+			            </div>
+			            <h4>
+			            Environmental Design </h4>
+			            <ol>
+			              <li>Eco design: environmental and green design</li>
+			              <li>Theater and set design</li>
+			              <li>Interaction design</li>
+			              <li>Landscape architecture</li>
+			            </ol>
+			            </li>
+			          </ul>
+			    </div>
+
+
+			    <div id="sectionC" class="tab-pane fade">
+			          <ul class="about_columns">
+			            <li class="list right">
+			            <h4><strong>Slam!</strong>
+			            Argentina </h4>
+			            <ol>
+			              <li>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus porttitor hendrerit sagittis. <br>
+			              <br>
+			               Sed maximus ligula in nunc rutrum, et pretium ex commodo. Nam faucibus est felis, a convallis urna dictum eu. Aenean at erat libero. Fusce ac mattis odio, et laoreet nulla. Vestibulum arcu mauris, sollicitudin non nunc sed, fermentum pharetra velit. Suspendisse facilisis sem quis molestie maximus. Sed consectetur vestibulum est vitae maximus. Nam vestibulum erat non mauris ultrices congue. Nulla at nisi eu arcu dignissim sodales.<br>
+			              <br>
+			               Duis at dui in urna aliquet finibus. Phasellus placerat mi orci, mattis pharetra arcu scelerisque sit amet. Proin varius volutpat ante, a imperdiet erat. Nunc eget risus vestibulum, porta est nec, fermentum libero. Nulla fermentum leo id nunc porttitor, volutpat pharetra nisl pretium. Nunc aliquet feugiat lorem, non semper felis gravida non. Sed libero mi, laoreet eu urna venenatis, ornare euismod nulla. </li>
+			            </ol>
+			            </li>
+			            <li class="list">
+			            <h4>
+			            SLAM<strong>??</strong></h4>
+			            <ol>
+			              <li>
+			               Nunc arcu ante, ultrices non maximus sit amet, imperdiet quis lorem. Donec eleifend, libero ac luctus semper, quam justo sagittis libero, non gravida arcu arcu sit amet odio. Proin ac scelerisque est, eu sodales purus. Phasellus bibendum velit libero, id scelerisque purus auctor porttitor. Fusce vitae ullamcorper lacus. Nulla id quam eu ligula tincidunt pulvinar eu non nisl. 
+			               <br>
+			               <br>
+			               Nunc gravida facilisis urna, vel blandit urna dictum sit amet. Phasellus pretium neque id nunc elementum, vel dapibus odio venenatis. Curabitur quam nulla, finibus quis ultrices vel, lacinia non mi. Aliquam aliquam molestie elit maximus imperdiet. Pellentesque sed finibus ligula. Pellentesque eget tristique augue, non fermentum nulla. Vestibulum placerat dui non nibh posuere, et porttitor nibh dapibus. Curabitur vitae dapibus odio. Morbi tempus tempus arcu, at egestas turpis vulputate bibendum. Donec eu hendrerit augue, rhoncus suscipit magna. Vivamus nec sem in lectus pulvinar accumsan in vel nibh. Integer ut mattis nibh. Ut euismod eros in arcu porta tempus. Suspendisse sem massa, faucibus vitae magna at, luctus interdum magna. </li>
+			            </ol>
+			            </li>
+			          </ul>
+
+			    </div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
+
+<!-- SEC: JUGADORES -->
+<div id="sec_jugadores" class="seccion fondo_gris">
+
+	<!--<div class="first_line wow fadeInDown"></div>-->
+
+    <div class="contenedor_sec torneo_info_inside">
+
+	    <div class="titulo wow fadeInDown">
+
+	      	<h2 class="sombra_gris_blanco">
+	        	
+	        	<i class="icon-jugador"></i>Jugadores
+
+	        	<small class="label_region">en Argentina</small>
+	      	
+	      	</h2>
+	    
+	    </div>
+
+	    <div class="ver_mas wow bounceInRight entrada-1s">
+
+	    	<a href="">
+
+	    		<h3><i class="fa fa-caret-right"></i>ver todos los jugadores</h3>
+	    	
+	    	</a>
+	    	
+	    </div>
+
+    	<div class="row">
+
+    		<div class="col-xs-10 col-sm-5 col-md-4">
+
+    			<div class="tarjeta_jugador wow fadeInLeft">
+
+    				<a href="/jugador"><img src="images/IMG-USR01.jpg"></a>
+
+                	<div class="jug_resumen">
+
+                		<h3>Jorge Solís</h3>
+
+                		<div class="data-box">
+
+		        			<span class="icon-box"><i class="icon-copa"></i></span>
+
+		        			<h4>TORNEOS</h4>
+
+		        			<p>+12</p>
+						
+						</div>
+
+						<div class="data-box">
+
+		        			<span class="icon-box"><i class="icon-video"></i></span>
+
+		        			<h4>VIDEOS</h4>
+
+		        			<p>+12</p>
+						
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+			<div class="col-xs-10 col-sm-5 col-md-4">
+
+    			<div class="tarjeta_jugador wow fadeInLeft">
+
+    				<a href=""><img src="images/IMG-USR02.jpg"></a>
+
+                	<div class="jug_resumen">
+
+                		<h3>Jorge Solís</h3>
+
+                		<div class="data-box">
+
+		        			<span class="icon-box"><i class="icon-copa"></i></span>
+
+		        			<h4>TORNEOS</h4>
+
+		        			<p>+12</p>
+						
+						</div>
+
+						<div class="data-box">
+
+		        			<span class="icon-box"><i class="icon-video"></i></span>
+
+		        			<h4>VIDEOS</h4>
+
+		        			<p>+12</p>
+						
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+			<div class="col-xs-10 col-sm-5 col-md-4">
+
+    			<div class="tarjeta_jugador wow fadeInLeft">
+
+    				<a href=""><img src="images/IMG-USR03.jpg"></a>
+
+                	<div class="jug_resumen">
+
+                		<h3>Jorge Solís</h3>
+
+                		<div class="data-box">
+
+		        			<span class="icon-box"><i class="icon-copa"></i></span>
+
+		        			<h4>TORNEOS</h4>
+
+		        			<p>+12</p>
+						
+						</div>
+
+						<div class="data-box">
+
+		        			<span class="icon-box"><i class="icon-video"></i></span>
+
+		        			<h4>VIDEOS</h4>
+
+		        			<p>+12</p>
+						
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+			<div class="col-xs-10 col-sm-5 col-md-4">
+
+    			<div class="tarjeta_jugador wow fadeInLeft">
+
+    				<a href=""><img src="images/IMG-USR04.jpg"></a>
+
+                	<div class="jug_resumen">
+
+                		<h3>Jorge Solís</h3>
+
+                		<div class="data-box">
+
+		        			<span class="icon-box"><i class="icon-copa"></i></span>
+
+		        			<h4>TORNEOS</h4>
+
+		        			<p>+12</p>
+						
+						</div>
+
+						<div class="data-box">
+
+		        			<span class="icon-box"><i class="icon-video"></i></span>
+
+		        			<h4>VIDEOS</h4>
+
+		        			<p>+12</p>
+						
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+			<div class="col-xs-10 col-sm-5 col-md-4">
+
+    			<div class="tarjeta_jugador wow fadeInLeft">
+
+    				<a href=""><img src="images/avatar-default.png"></a>
+
+                	<div class="jug_resumen">
+
+                		<h3>Jorge Solís</h3>
+
+                		<div class="data-box">
+
+		        			<span class="icon-box"><i class="icon-copa"></i></span>
+
+		        			<h4>TORNEOS</h4>
+
+		        			<p>+12</p>
+						
+						</div>
+
+						<div class="data-box">
+
+		        			<span class="icon-box"><i class="icon-video"></i></span>
+
+		        			<h4>VIDEOS</h4>
+
+		        			<p>+12</p>
+						
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+			<div class="col-xs-10 col-sm-5 col-md-4">
+
+    			<div class="tarjeta_jugador wow fadeInLeft">
+
+    				<a href=""><img src="images/avatar-default.png"></a>
+
+                	<div class="jug_resumen">
+
+                		<h3>Jorge Solís</h3>
+
+                		<div class="data-box">
+
+		        			<span class="icon-box"><i class="icon-copa"></i></span>
+
+		        			<h4>TORNEOS</h4>
+
+		        			<p>+12</p>
+						
+						</div>
+
+						<div class="data-box">
+
+		        			<span class="icon-box"><i class="icon-video"></i></span>
+
+		        			<h4>VIDEOS</h4>
+
+		        			<p>+12</p>
+						
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+		<div class="mini_gap"></div>
+
+		<a style="visibility: visible; animation-name: fadeInLeft;" class="wow fadeInLeft btn eventime_button animated entrada-0s5" href="#about_menu" role="button">VER TODOS</a>
+
+	</div>
+
+</div>
+
+
+<!-- SEC: REGISTRO -->
+<div id="planilla-registro" class="seccion planilla">
+
+	<div class="contenedor_sec">
+ 	
+	 	<div class="titulo wow fadeInLeftBig">
+
+	      	<h2 class="sombra_blanco_gris">
+	        	
+	        	<i class="fa fa-user-plus"></i>REGISTRATE
+	      	
+	      	</h2>
+
+	      	<p>¿Querés participar?</p>
+
+	      	<p><small>REGISTRATE PARA CREAR TU PERFIL DE JUGADOR Y PARTICIPAR DE LOS TORNEOS.</small></p>
+	    
+	    </div>
+
+		<div id="torneo-inner">
+
+			<form>
+
+				<div class="row">
+
+					<div class="col-lg-5 col-md-6 wow fadeInRightBig">
+
+					  	<div class="form-group">
+
+					    	<label for="nombre">Nombre:</label>
+
+					 		<input type="text" class="form-control" id="nombre" placeholder="NOMBRE">
+
+					  	</div>
+
+					  	<div class="form-group">
+
+					    	<label for="apellido">Apellido:</label>
+
+					 		<input type="text" class="form-control" id="apellido" placeholder="APELLIDO">
+
+					  	</div>
+
+					  	<div class="form-group">
+
+					    	<label for="email">email:</label>
+
+					 		<input type="email" class="form-control" id="email" placeholder="EMAIL">
+
+					  	</div>
+
+					  	<div class="form-group">
+
+					    	<label for="contrasenia">Contraseña:</label>
+
+					 		<input type="password" class="form-control" id="contrasenia" placeholder="***">
+
+					  	</div>
+
+					  	<div class="form-group">
+
+					    	<label for="contraseniaConf">Confirmar contraseña:</label>
+
+					 		<input type="password" class="form-control" id="contraseniaConf" placeholder="***">
+
+					  	</div>
+
+					  	<div class="checkbox wow fadeInLeft entrada-1s">
+						    
+						    <label>
+						    
+						    	<input type="checkbox"> <span>Acepto los <a href="">Términos y condiciones</a> del servicio.</span>
+						    
+						    </label>
+						
+						</div>
+
+						<div class="mini_gap"></div>
+
+						<a style="visibility: visible; animation-name: bounceInRight;" class="wow bounceInRight btn btn_principal animated entrada-1s animated" href="#about_menu" role="button">REGISTRARME</a>
+
+					</div>
+
+				</div>
+
+			</form>
+
+		</div>
+
+	</div>
+
+</div>
+
+
+<!-- SEC: INFORMACIÓN -->
+<div id="info01" class="info_seccion wow slideInRight">
+
+	<div class="info_contenedor wow bounceInRight entrada-0s5">
+
+		<h2><i class="fa fa-arrow-up"></i> Seleccioná tu región!</h2>
+
+		<h3>Seleccioná para ver qué está pasando cerca tuyo. </h3>
+
+		<h4>DATO +33</h4>
+
+		<p>Texto promocional de algo interesante.. </p>
+
+		<a style="visibility: visible; animation-name: fadeInUpBig;" class="wow fadeInUpBig btn animated" href="#about_menu" role="button">VER MÁS</a>
+
+	</div>
+
+    <!--<div class="first_line"></div>
+
+    <div class="titulo">
+        <p>
+           Información !!
+        </p>
+    </div>
+    
+    <div class="first_description">
+        <p>
+           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer varius lectus ut dui cursus luctus. Nam aliquam, odio vitae imperdiet porta, quam sem interdum sem, vel dignissim arcu orci in nisl.
+        </p>
+    </div>-->
+    
+    <div class="mini_gap"></div>
+
+</div>
+
+<!-- SEC: VIEDEO -->
+<div id="sec_videos" class="seccion fondo_gris">
+
+	<!--<div class="first_line wow fadeInDown"></div>-->
+
+    <div class="contenedor_sec torneo_info_inside">
+
+	    <div class="titulo wow fadeInDown">
+
+	      	<h2 class="sombra_gris_blanco">
+	        	
+	        	<i class="icon-jugador"></i>Videos
+
+	        	<small class="label_region">en Argentina</small>
+	      	
+	      	</h2>
+	    
+	    </div>
+
+	    <div class="ver_mas wow bounceInRight entrada-1s5">
+
+	    	<a href="">
+
+	    		<h3><i class="fa fa-caret-right"></i>ver todos los videos</h3>
+	    	
+	    	</a>
+	    	
+	    </div>
+
+	    
+
+    	<div class="row">
+
+    		<div class="col-xs-11 col-md-6 col-lg-4">
+
+    			<div class="tarjeta_video wow fadeInLeft">
+
+    				<div class="embed-responsive embed-responsive-16by9">
+
+					  	<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/1g7wpkLa0r8" allowfullscreen></iframe>
+
+					</div>
+
+				</div>
+
+			</div>
+
+			<div class="col-xs-11 col-md-6 col-lg-4">
+
+    			<div class="tarjeta_video wow fadeInLeft">
+
+    				<div class="embed-responsive embed-responsive-16by9">
+
+					  	<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/EayB4xrcxX4" allowfullscreen></iframe>
+
+					</div>
+
+				</div>
+
+			</div>
+
+			<div class="col-xs-11 col-md-6 col-lg-4">
+
+    			<div class="tarjeta_video wow fadeInLeft">
+
+    				<div class="embed-responsive embed-responsive-16by9">
+
+					  	<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/reIP1rbemRs" allowfullscreen></iframe>
+
+					</div>
+
+				</div>
+
+			</div>
+
+			<div class="col-xs-11 col-md-6 col-lg-4">
+
+    			<div class="tarjeta_video wow fadeInLeft">
+
+    				<div class="embed-responsive embed-responsive-16by9">
+
+					  	<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/P2Q4uEicn3I" allowfullscreen></iframe>
+
+					</div>
+
+				</div>
+
+			</div>
+
+			<div class="col-xs-11 col-md-6 col-lg-4">
+
+    			<div class="tarjeta_video wow fadeInLeft">
+
+    				<div class="embed-responsive embed-responsive-16by9">
+
+					  	<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/rI57qseVg1U" allowfullscreen></iframe>
+
+					</div>
+
+				</div>
+
+			</div>
+
+			<div class="col-xs-11 col-md-6 col-lg-4">
+
+    			<div class="tarjeta_video wow fadeInLeft">
+
+    				<div class="embed-responsive embed-responsive-16by9">
+
+					  	<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/iZ5yVp1COaU" allowfullscreen></iframe>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+		<a style="visibility: visible; animation-name: fadeInLeft;" class="wow fadeInLeft btn eventime_button animated" href="#about_menu" role="button">VER TODOS</a>
+
+	</div>
+
+</div>
+
+
+
+<!-- Modal HTML 
+<div id="myModal" class="modal fade eventime_modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+        &times; </button>
+        <h4 class="modal-title">
+        Jeremy Crackevich </h4>
+        <small>
+        Featured guest </small>
+      </div>
+      <div class="modal-body">
+        <img src="images/featured_speaker.jpg" alt="img10"/>
+        <p>
+          <br>
+           Crackevich's influence on contemporary graphic design is unparalleled. <br>
+           This outstanding expert and self-named typomaniac is responsible for numerous custom and redesigned typefaces and font identities for world-renowned corporations. Moreover, he has created dozens of commercial typefaces which are considered to be modern classics of typography. <br>
+           In 1979, he founded CrackevichDesign - German mega-firm providing global design consultancy. The success of this company can be measured by a long list of the most relevant prizes including multiple red dot awards and European Design Awards. <br>
+          <br>
+           More about Jeremy Crackevich can be found <a href="#">here</a>.
+        </p>
+      </div>
+      <div class="modal-footer">
+        <a href="#" class="contact_icon fa fa-facebook graybtn graytxt">
+        </a>
+        <a href="#" class="contact_icon fa fa-twitter graybtn graytxt">
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="reservation_menu" class="wow fadeIn">
+  <div class="reservation">
+    <div class="gap">
+    </div>
+    <div class="first_line">
+    </div>
+    <div class="titulo">
+      <p>
+         Registrate
+      </p>
+    </div>
+    <div class="first_description">
+      <p>
+         Vestibulum aliquet urna sapien, et condimentum ex efficitur vitae. Etiam lacinia nunc id risus semper, vitae sagittis tellus condimentum. 
+      </p>
+    </div>
+    <form id="reservation_form" action="#">
+      <input class="wow fadeInDown" type="hidden" name="action" value="sendbooking">
+      <input class="wow fadeInDown" name="first_name" type="text" id="make_a_reservation_input_1" placeholder="Nombre">
+      <input class="wow fadeInDown" name="last_name" type="text" id="make_a_reservation_input_2" placeholder="Apellido">
+      <input class="wow fadeInDown" name="last_name" type="text" id="make_a_reservation_input_2" placeholder="Nombre de Usuario">
+      <input class="wow fadeInDown" name="last_name" type="text" id="make_a_reservation_input_2" placeholder="Contraseña">
+      <input class="wow fadeInDown" name="email" type="text" id="make_a_reservation_input_3" placeholder="Email">
+      <input class="wow fadeInDown" name="address" type="text" id="make_a_reservation_input_4" placeholder="Localidad">
+      
+      
+      <input class="wow fadeInDown" name="zip" type="text" id="make_a_reservation_input_5" placeholder="Zip Code">
+      <input class="wow fadeInDown" name="telephone" type="text" id="make_a_reservation_input_6" placeholder="Phone">
+      
+      <input class="wow fadeInDown" name="price" type="radio" value="Type 1" id="radio01"/>
+      <label class="wow fadeInUp" for="radio01">
+      <span>
+      $1350 </span>
+      The Big Ticket gets you into all five days of HOW Design Live and includes all sessions, workshops, keynotes and networking events. </label>
+      <input name="price" value="Type 2" type="radio" id="radio02"/>
+      <label class="wow fadeInUp" for="radio02">
+      <span>
+      $800 </span>
+      Two-Day Registration. Can’t make the full four days of Design Days Conference, but have more time than just a day? Choose a two-day. </label>
+      <input name="price" value="Type 3" type="radio" id="radio03"/>
+      <label class="wow fadeInUp" for="radio03">
+      <span>
+      $350 </span>
+      One-Day Registration. Choose to customize a time frame that works best for you. You’ll still get to choose from every single session. </label>
+      <input name="price" value="Type 4" type="radio" id="radio04"/>
+      <label class="wow fadeInUp" for="radio04">
+      <span>
+      $5000 </span>
+      Registering 5 or more from your company? The Group Big Ticket gets each member of your group into all four days of Design Days Conference. </label>
+      
+
+      <input type="submit" value="registrate" class="reservation_button wow fadeInDown" role="button">
+      </br>
+      <p style="text-align:center"></br>
+      	<span>¿ya eres usuario?</span>
+      </p>
+      <input type="submit" value="Ingresar" class="reservation_button wow fadeInDown" role="button">
+      <p style="text-align:center">¿olvidaste la contraseña?</p>
+      
+
+      <div class="clear">
+      </div>
+      <div id="contactMsg" class="wow fadeInUp">
+      </div>
+    </form>
+    <div class="gap">
+    </div>
+  </div>
+</div>
+<!-- End Reservation -->
+
+
+
+<!-- Contact -->
+<div id="contact_menu" class="wow fadeIn">
+  <div class="contact">
+    <div class="mask">
+
+	 	<div class="titulo wow fadeInDown">
+
+	      	<h2 class="contacto_tit">
+	        	
+	        	<i class="fa fa-user-plus"></i>CONTACTO
+	      	
+	      	</h2>
+      <div class="first_description">
+        <p>
+           The Design Days Conference will take place at the Main Conference Hall New York, located at 151 East Wacker NY 60601. <br>
+           Come and enjoy the unique atmosphere of one of the most beautiful theatres in Bratislava, and the city which has so much to offer.
+        </p>
+      </div>
+      <div class="mini_gap">
+      </div>
+      
+      <!--
+      <div id="map">
+      </div>
+      -->
+      
+      <div class="contact_information">
+        <h6 class="wow fadeIn">
+        VENUE </h6>
+        <p class="wow fadeIn">
+           One of the oldest Halls in NY has been praised by hosting actors from Hungary, Austria and Germany for ages. Situated on the south bank of the river and surrounded by a park, Arena Hals is just a few moments away from the historical center of NY. Be it for its beautiful historic look or super convenient location, we are very delighted to host our conference at this exceptional venue. <br>
+          <br>
+           <span class="texticon fa fa-home"></span>Address: 151 East Wacker NY 60601 <br>
+           <span class="texticon fa fa-street-view"></span>GPS coordinates: 438.135696,317.114645
+        </p>
+        <h6 class="wow fadeIn">
+        NEARBY ACCOMODATION </h6>
+        <p class="wow fadeIn">
+           Are you looking for a place to stay? <br>
+          <br>
+           NY has the accommodation for everyone, whatever your budget. We recommend, when selecting a hotel, going for one of the many hotels in the city center. Most of them offer a spectacular view of the historic part of town and the city landmarks. Thanks to the convenient central location, you will be able to experience the city's most charismatic areas firsthand.
+        </p>
+      </div>
+      <div class="contact_information">
+        <h6 class="wow fadeIn">
+        Food & Drink </h6>
+        <p class="wow fadeIn">
+           We prepared for you the best tips on nice places to eat & drink at NY Main Hall. Everything can be reached on foot in a few minutes.
+        </p>
+        <h6 class="wow fadeIn">
+        Contacts </h6>
+        <b class="wow fadeIn">Aaron Doe</b>
+        <p class="wow fadeIn">
+             <span class="texticon fa fa-comment"></span>All media inquiries related to the Design Community
+        <br>
+           <span class="texticon fa fa-envelope"></span> doe@examle.com 
+           <br>
+           <span class="texticon fa fa-phone"></span> 919-123-1233 or 123-123-123
+        </p>
+        <b class="wow fadeIn">Lyn Doe</b>
+        <p class="wow fadeIn">
+           Event Customer Service Manager<br>
+           <span class="texticon fa fa-comment"></span>Questions about conference registration. <br>
+           <span class="texticon fa fa-envelope"></span>designlive@example.com
+           <br>
+            <span class="texticon fa fa-phone"></span>1-123-123-1233, option 2
+        </p>
+        <a href="#" class="contact_icon fa fa-facebook wow fadeInUp">
+        </a>
+        <a href="#" class="contact_icon fa fa-twitter wow fadeInUp">
+        </a>
+        <a href="#" class="contact_icon fa fa-google-plus wow fadeInUp">
+        </a>
+        <a href="#" class="contact_icon fa fa-pinterest-p wow fadeInUp">
+        </a>
+        <a href="#" class="contact_icon fa fa-sellsy wow fadeInUp">
+        </a>
+      </div>
+      <div class="mini_gap">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script src="scripts/minify.js"></script>
