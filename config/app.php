@@ -52,6 +52,8 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Barryvdh\Cors\ServiceProvider::class,
         Alaouy\Youtube\YoutubeServiceProvider::class,
+        Laravel\Socialite\SocialiteServiceProvider::class,
+
 
 
 
@@ -113,6 +115,8 @@ return [
         'View'      => Illuminate\Support\Facades\View::class,
         'Carbon'    => Carbon\Carbon::class,
         'JWT'       => \Firebase\JWT\JWT::class,
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
+
 
     ],
 

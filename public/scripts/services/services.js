@@ -13,6 +13,13 @@ angular.module('slamApp')
         }
     });
 }])
+.factory('Slider',['$resource', 'api_host', function($resource, api_host){
+    return $resource(api_host+'/api/sliders/:id', { id:'@id' }, {
+        update: {
+            method: 'PUT'
+        }
+    });
+}])
 .factory('User',['$resource', 'api_host', function($resource, api_host){
     return $resource(api_host+'/api/users/:id', { id:'@id' }, {
         update: {

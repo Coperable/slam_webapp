@@ -15,7 +15,8 @@
         "guzzlehttp/oauth-subscriber": "^0.3.0",
         "aws/aws-sdk-php": "^3.8",
         "league/flysystem-aws-s3-v3": "^1.0",
-        "alaouy/youtube": "^1.2"
+        "alaouy/youtube": "^1.2",
+        "socialiteproviders/twitter": "^1.0"
 
     },
     "require-dev": {

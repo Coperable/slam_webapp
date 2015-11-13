@@ -75,6 +75,51 @@ class MediaController extends Controller {
         return Response::json(['OK' => 1, 'filename' => $filename, 'media_id' => $image->id]);
     }
 
+    public function storeImageSlider(Request $request, Media $media) {
+
+        $user = User::find($request['user']['sub']);
+
+        if(!$request->hasFile('file')) { 
+            return Response::json(['error' => 'No File Sent']);
+        }
+
+        if(!$request->file('file')->isValid()) {
+            return Response::json(['error' => 'File is not valid']);
+        }
+
+        $file = $request->file('file');
+
+        $v = Validator::make(
+            $request->all(),
+            ['file' => 'required|mimes:jpeg,jpg,png|max:8000']
+        );
+
+        if($v->fails()) {
+            return Response::json(['error' => $v->errors()]);
+        }
+
+        Log::info($request->file('file'));
+
+        $image = Media::create([
+            'name' => $request->file('file')->getClientOriginalName(),
+            'ext' => $request->file('file')->guessExtension(),
+            'user_id' => $user->id,
+            'type' => 'IMAGE'
+        ]);
+        
+        $filename = 'slider_'.$image->id . '.' . $image->ext;
+
+        $image->name = $filename;
+        $image->save();
+
+        Storage::disk('local')->put($filename,  File::get($file));
+        Storage::disk('s3-slam')->put('/slam/' . $filename, file_get_contents($file), 'public');
+
+        return Response::json(['OK' => 1, 'filename' => $filename, 'media_id' => $image->id]);
+    }
+
+
+
     public function videosSearch(Request $request) {
         $params = array(
             'q'             => $request->input('q'),

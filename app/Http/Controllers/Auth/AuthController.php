@@ -4,8 +4,12 @@ namespace Slam\Http\Controllers\Auth;
 
 use Config;
 use Hash;
+use Log;
 use JWT;
 use Validator;
+
+use Socialite;
+
 use Slam\User;
 use Slam\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -13,6 +17,8 @@ use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 use GuzzleHttp;
 use GuzzleHttp\Subscriber\Oauth\Oauth1;
+use Slam\Jobs\UpdateProfilePicture;
+use Storage;
 
 class AuthController extends Controller
 {
@@ -113,6 +119,16 @@ class AuthController extends Controller
         if (Hash::check($password, $user->password)) {
             unset($user->password);
 
+
+            if(!isset($user->photo)) {
+                //$this->dispatch(new UpdateProfilePicture($user));
+                $gravatar = md5(strtolower(trim($user->email)));
+                $user->photo = $gravatar;
+                $user->save();
+                Storage::disk('s3-slam')->put('/slam/profiles/' . $gravatar, file_get_contents('http://www.gravatar.com/avatar/'.$gravatar.'?d=identicon&s=150'), 'public');
+            }
+ 
+
             return response()->json([
                 'token' => $this->createToken($user),
                 'select_profile' => ($user->profile_type == null) 
@@ -139,8 +155,82 @@ class AuthController extends Controller
         $user->password = Hash::make($request->input('password'));
         $user->save();
 
+        //$this->dispatch(new UpdateProfilePicture($user));
+        $gravatar = md5(strtolower(trim($user->email)));
+        $user->photo = $gravatar;
+        $user->save();
+        Storage::disk('s3-slam')->put('/slam/profiles/' . $gravatar, file_get_contents('http://www.gravatar.com/avatar/'.$gravatar.'?d=identicon&s=150'), 'public');
+
+
         return response()->json(['token' => $this->createToken($user)]);
     }
+
+    public function doSocial(Request $request, $name) {
+
+        if ($request->has('redirectUri')) {
+            config()->set("services.{$name}.redirect", $request->get('redirectUri'));
+        }
+
+        $provider = Socialite::driver($name);
+
+        //$provider->stateless();
+
+        Log::info('first step');
+        $profile = $provider->user();
+        Log::info('second step');
+
+
+        if ($request->header('Authorization')) {
+            $user = User::where($name, '=', $profile['sub']);
+
+            if ($user->first()) {
+                return response()->json(['message' => 'There is already a '.$name.' account that belongs to you'], 409);
+            }
+
+            $token = explode(' ', $request->header('Authorization'))[1];
+            $payload = (array) JWT::decode($token, Config::get('app.token_secret'), array('HS256'));
+
+            $user = User::find($payload['sub']);
+            $user->google = $profile['sub'];
+            $user->username = $user->username || $profile['name'];
+            $user->save();
+
+            return response()->json(['token' => $this->createToken($user)]);
+        } else {
+            $user = User::where($name, '=', $profile['sub']);
+
+            if ($user->first()) {
+                return response()->json(['token' => $this->createToken($user->first())]);
+            }
+
+            $user = new User;
+            
+            switch($name) {
+
+                case 'google':
+                    $user->google = $profile->getId();
+                    break;
+                case 'facebook':
+                    $user->facebook = $profile->getId();
+                    break;
+                case 'twitter':
+                    $user->twitter = $profile->getId();
+                    break;
+
+            }
+
+            $user->username = $profile->getNickname();
+            $user->name = $profile->getName();
+            $user->email = $profile->getEmail();
+            $user->photo = $profile->getAvatar();
+
+            $user->save();
+
+            return response()->json(['token' => $this->createToken($user)]);
+        }
+
+    }
+
 
     public function facebook(Request $request) {
         $accessTokenUrl = 'https://graph.facebook.com/v2.3/oauth/access_token';

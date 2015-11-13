@@ -10,6 +10,7 @@ use Slam\User;
 use Slam\Model\Competition;
 use Slam\Model\Media;
 use Slam\Model\Location;
+use Slam\Model\UserCompetition;
 
 class CompetitionController extends Controller {
 
@@ -46,6 +47,12 @@ class CompetitionController extends Controller {
             $competition->cover_photo = $request->input('cover_photo');
             $competition->users_limit = $request->input('users_limit');
             $competition->users_amount = $request->input('users_amount');
+            $competition->place = $request->input('place');
+            $competition->hashtag = $request->input('hashtag');
+            $competition->facebook = $request->input('facebook');
+            $competition->twitter = $request->input('twitter');
+            $competition->instagram = $request->input('instagram');
+            $competition->youtube = $request->input('youtube');
             $competition->rules = $request->input('rules');
             $arr = explode(".", $request->input('event_date'), 2);
             $event_date = str_replace("T", " ", $arr[0]);
@@ -136,6 +143,7 @@ class CompetitionController extends Controller {
             ]);
             
             $video->competition_id = $competition->id;
+            $video->region_id = $competition->region->id;
             $video->title = $request->input('title');
             $video->description = $request->input('description');
             $video->thumb_path = $request->input('thumb_path');
@@ -151,6 +159,24 @@ class CompetitionController extends Controller {
         return Media::where('competition_id', $competition->id)->where('type', 'VIDEO')->get();
 
     }
+
+	public function participate(Request $request, $competitionId) {
+        $user = User::find($request['user']['sub']);
+        $competition = Competition::find($competitionId);
+        DB::transaction(function() use ($request, $competition, $user) {
+            $userCompetition =  UserCompetition::firstOrCreate(array(
+                'user_id' => $user->id,
+                'competition_id' => $competition->id
+            ));
+
+        });
+ 
+        return response()->json(['message' => 'Usuario participando'], 200);
+
+    }
+
+
+
 
 }
 

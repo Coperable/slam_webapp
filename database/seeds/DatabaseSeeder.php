@@ -23,6 +23,9 @@ class DatabaseSeeder extends Seeder
 		$this->call('RolesTableSeeder');
         $this->command->info('Roles seeded!');
 
+		$this->call('ColorsTableSeeder');
+        $this->command->info('Colors seeded!');
+
         Model::reguard();
     }
 }

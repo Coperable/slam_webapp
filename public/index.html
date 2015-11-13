@@ -1,8 +1,147 @@
-<!doctype html> <html ng-app="slamApp" ng-controller="site-controller"> <head> <meta charset="utf-8"> <title></title> <meta http-equiv="X-UA-Compatible" content="IE=edge"> <meta name="description" content=""> <meta name="viewport" content="width=device-width,initial-scale=1"> <!-- Place favicon.ico and apple-touch-icon.png in the root directory --> <link rel="stylesheet" href="styles/vendor.css"> <link rel="stylesheet" href="styles/main.css"> <link rel="stylesheet" ng-href="styles/colors_{{current_region.id}}.css"> <base href="/"> </head> <body> <!--[if lte IE 8]>
+<!doctype html>
+<html ng-app="slamApp" ng-controller="site-controller">
+
+<head>
+
+    <meta charset="utf-8">
+
+    <title></title>
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <meta name="description" content="">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    
+    <link href='http://fonts.googleapis.com/css?family=Raleway:400,100,700,300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="bower_components/fontawesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="styles/custom.css">
+    <link rel="stylesheet" href="styles/colors.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/slam.css">
+  
+
+    <!-- FONTELLO: fuente de íconos: -->
+    <link rel="stylesheet" href="fonts/fontello/css/animation.css">
+
+    <link rel="stylesheet" href="fonts/fontello/css/slam.css">
+
+    <!-- endbuild -->
+    <link ng-if="current_region" rel="stylesheet" ng-href="styles/colors_{{current_region.id}}.css">
+    <base href="/">
+
+</head>
+
+<body >
+
+    <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]--> <div id="preloader"> <div class="pre_container"> <div class="loader"> </div> </div> </div> <!-- Fixed navbar --> <nav class="navbar navbar-fixed-top nav_mask" data-ng-controller="sessionBar"> <div class="navi_container"> <div class="navbar-header"> <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"> <span class="sr-only"> Toggle navigation </span> <span class="icon-bar"> </span> <span class="icon-bar"> </span> <span class="icon-bar"> </span> </button> <a class="navbar-brand" ng-href="/"> <i class="icon-slam-logo04 icono-principal logo-nav"></i> </a> <div class="selector_region dropdown"> <a id="dLabel" data-target="#" href="http://example.com" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"> {{current_region.name}} <span class="caret"></span> </a> <ul class="dropdown-menu" aria-labelledby="dLabel"> <li ng-repeat="region in regions"><a href="" ng-click="setCurrentRegion(region)" class="color_{{region.icon}}">{{region.name}}</a></li> <li class="divider"></li> </ul> </div> </div> <div id="navbar" class="navbar-collapse collapse"> <ul class="nav navbar-nav"> <li> <a href="/torneos" data-toggle="tooltip" data-placement="bottom" title="Torneos"> <i class="icon-copa"></i></a> </li> <li> <a href="/jugadores" data-toggle="tooltip" data-placement="bottom" title="Jugadores"> <i class="icon-jugador"></i> </a> </li> <li> <a href="/videos" data-toggle="tooltip" data-placement="bottom" title="Videos"> <i class="icon-video"></i> </a> </li> <!-- <li class="barra-hor">|</li> --> <li> <a ng-href="/registro" data-toggle="tooltip" data-placement="bottom" title="Notificaciones"> <i class="icon-notificacion"></i> </a> </li> <li> <a class="usr-menu" href="">karlhutt <i class="fa fa-sort-down"></i></a> </li> <li> <a ng-href="/revista" data-toggle="tooltip" data-placement="bottom" title="Revista"> <i class="icon-revista"></i> </a> </li> <li> <a ng-href="/foro" data-toggle="tooltip" data-placement="bottom" title="Foro"> <i class="fa fa-comment"></i> </a> </li> <!--
-                    
+    <![endif]-->
+
+    <div id="preloader">
+        <div class="pre_container">
+            <div class="loader"></div>
+        </div>
+    </div>
+
+    <!-- Fixed navbar -->
+    <nav id="navbar" class="navbar navbar-fixed-top nav_mask" data-ng-controller="sessionBar">
+        <div class="navi_container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">
+                        Toggle navigation 
+                    </span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                
+                <a class="navbar-brand" ng-href="/">
+                    <i class="icon-slam-logo04 icono-principal logo-nav"></i>
+                </a>
+
+                <div class="selector_region dropdown">
+                    <a id="dLabel" data-target="#" href="http://example.com" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        {{current_region.name}}
+                        <span class="caret"></span>
+                    </a>
+
+                    <ul class="dropdown-menu" aria-labelledby="dLabel">
+                        <li ng-repeat="region in regions" ><a href="" ng-click="setCurrentRegion(region)" class="color_{{region.icon}}" >{{region.name}}</a></li>
+                        <li class="divider"></li>
+                    </ul>
+                
+                </div>
+
+            </div>
+            
+            <div id="navbar" class="navbar-collapse collapse">
+            
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/torneos" data-toggle="tooltip" data-placement="bottom" title="Torneos">
+                            <i class="icon-copa"></i>
+                        </a>
                     </li>
+                    <li>
+                        <a href="/jugadores" data-toggle="tooltip" data-placement="bottom" title="Jugadores">
+                            <i class="icon-jugador"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/videos" data-toggle="tooltip" data-placement="bottom" title="Videos">
+                            <i class="icon-video"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a ng-href="/registro" data-toggle="tooltip" data-placement="bottom" title="Notificaciones">
+                            <i class="icon-notificacion"></i>
+                        </a>
+                    </li>
+
+                    <li ng-if="isAuthenticated()" class="dropdown">
+                        <a class="usr-menu" data-target="#" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown">
+                            {{profile.username}}
+                            <span class="caret"></span>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="dLabel">
+                            <li>
+                                <a ng-click="goProfile()">Perfil</a>
+                            </li>
+                            <li>
+                                <a ng-click="logout()">Cerrar Sesión</a>
+                            </li>
+                        </ul>
+                        
+                    </li>
+                    <li ng-if="!isAuthenticated()">
+                        <a class="usr-menu">Ingresar</a>
+                    </li>
+
+                    <li>
+                        <a ng-href="/revista" data-toggle="tooltip" data-placement="bottom" title="Revista">
+                            <i class="icon-revista"></i>
+                        </a>
+                    </li>
+                    
+                    <li>
+                        <a ng-href="/foro" data-toggle="tooltip" data-placement="bottom" title="Foro">
+                            <i class="fa fa-comment"></i>
+                        </a>
+                    </li>
+
+                    <!--
+                    
                     <li>
                         <a ng-href="/profile">
                         <i class="fa fa-question"></i> </a>
@@ -13,10 +152,217 @@
                         <i class="fa fa-contact"></i> </a>
                     </li>
 
-                    --> </ul> </div> <!--/.nav-collapse --> </div> <!--/.nav-collapse --> </nav> <header id="home_slider" class="carousel slide" ng-show="home_page"> <!-- Wrapper for Slides --> <div class="carousel-inner"> <div class="item active"> <!-- Set the first background image using inline CSS below. --> <div class="fill" style="background-image:url('images/IMG-HEADER01.jpg')"></div> <div class="fill_mask"> <div class="description"> <h2 class="details inicial wow fadeInDown entrada-1s5"> <img class="logo-principal" src="images/slam-LOGO.png"> </h2> <div class="details wow fadeInUp"> <p> Argentina </p> </div> <div class="buttons"> <a class="wow fadeInLeft btn eventime_button" href="#about_menu" role="button"> Conocer más </a> <a class="wow fadeInRight btn eventime_button" href="#planilla-registro" role="button"> Registrate </a> </div> </div> </div> </div> <div class="item"> <!-- Set the first background image using inline CSS below. --> <div class="fill" style="background-image:url('images/IMG-HEADER10.jpg')"></div> <div class="fill_mask"> <div class="description"> <h2 class="details wow fadeInDown"> 1er Slam! Futuro - en el CC Kirchner! Gratis! </h2> <div class="details wow fadeInUp"> <div class="fa fa-map-marker fa-2x"></div> <p> Centro Cultural Kirschner - CABA </p> </div> <div class="details wow fadeInUp"> <div class="fa fa-clock-o fa-2x"></div> <p> 28 Oct 2015 </p> </div> <div class="buttons"> <a class="wow fadeInLeft btn eventime_button" href="#about_menu" role="button"> Conocer más </a> <a class="wow fadeInRight btn eventime_button" href="#planilla-registro" role="button"> Registrate </a> </div> </div> </div> </div> <div class="item"> <!-- Set the first background image using inline CSS below. --> <div class="fill" style="background-image:url('images/IMG-HEADER07.jpg')"></div> <div class="fill_mask"> <div class="description"> <div class="details wow fadeInUp"> <blockquote> <div class="fa fa-quote-left fa-2x"></div> Aprendí sobre el sexo oral en una esquina de once cuando tenía once años gracias a un camionero. <div class="fa fa-quote-right fa-2x"></div> </blockquote> </div> <h3>Mariana Bugallo</h3> <div class="buttons"> <a class="wow fadeInUp btn eventime_button" href="#sec_jugadores" role="button"> Jugadores! </a> </div> </div> </div> </div> <div class="item"> <!-- Set the first background image using inline CSS below. --> <div class="fill" style="background-image:url('images/IMG-HEADER11.jpg')"></div> <div class="fill_mask"> <div class="description"> <div class="details wow fadeInUp"> <blockquote> <div class="fa fa-quote-left fa-2x"></div> No entiendo por qué elaboramos discursos para pertenecer a la normalidad, y en pos de encajar nos privamos de lo bello, artificioso y delirante de ser las locas más locas. <div class="fa fa-quote-right fa-2x"></div> </blockquote> </div> <h3>MHORIS EMM</h3> <div class="buttons"> <a class="wow fadeInUp btn eventime_button" href="#sec_jugadores" role="button"> Jugadores! </a> </div> </div> </div> </div> <div class="item"> <!-- Set the first background image using inline CSS below. --> <div class="fill" style="background-image:url('images/slider_3.jpg')"> </div> <div class="fill_mask"> <div class="description"> <h2 class="wow fadeInUp"> Unique Design Days </h2> <div class="details wow fadeInDown"> <div class="fa fa-clock-o fa-2x"> </div> <p> 20-24 AUG 2015 </p> </div> <div class="buttons"> <a class="wow fadeInUp btn eventime_button" href="#torneo_seccion" role="button"> schedule</a> </div> </div> </div> </div> </div> <a class="wow fadeInLeft left_arrow" href="#home_slider" data-slide="prev"> <svg width="26px" height="48"> <polygon points="3.3,24.5 25.5,2.3 24,0.8 0.3,24.5 24,48.2 25.5,46.7"/> </svg> </a> <a class="wow fadeInRight right_arrow" href="#home_slider" data-slide="next"> <svg width="26px" height="48"> <polygon points="22.5,24.5 0.3,2.3 1.8,0.8 25.5,24.5 1.8,48.2 0.3,46.7"/> </svg> </a> </header> <div ng-view=""></div> <footer> <div class="footer"> <div class="creditos"> <img src="/images/slam-logo-blanco.png"> <div class="segunda-linea"> <p>Slam Argentino de Poesía Oral</p> <p> <a href="http://www.facebook.com/slam.argentino.de.poesia.oral"><i class="fa fa-facebook-square"></i></a> <a href=""><i class="fa fa-youtube-square"></i></a> </p> </div> </div> </div> </footer> <!-- Google Analytics: change UA-XXXXX-X to be your site's ID --> <script>!function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
+                    -->
+
+                </ul>
+
+
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+        <!--/.nav-collapse -->
+    </nav>
+
+    <header id="home_slider_main" class="carousel slide"  ng-show="home_page" data-ng-controller="slider-controller">
+        <div class="carousel-inner">
+            
+            <div class="item active ">
+                
+                <div class="fill" style="background-image:url('images/IMG-HEADER01.jpg');"></div>
+                
+                <div class="fill_mask">
+
+                    <div class="description ">
+
+                        <h2 class="details inicial wow fadeInDown entrada-1s5">
+
+                            <img class="logo-principal" src="images/slam-LOGO.png"> 
+                        
+                        </h2>
+                        
+                        <div class="details wow fadeInUp">
+                        
+                            <p>
+                                Argentina
+                            </p>
+                        
+                        </div>
+                        <div class="buttons ">
+                            <a class="wow fadeInLeft btn eventime_button" href="#about_menu" role="button">
+                                Conocer más </a>
+                            <a class="wow fadeInRight btn eventime_button" href="#planilla-registro" role="button">
+                                Registrate </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="item" ng-repeat="slider in sliders" ng-cloak>
+            
+                <div class="fill" style="background-image:url('http://images.collab-dev.com/slam/{{slider.cover_photo}}');"></div>
+                <div class="fill_mask" ng-if="slider.type == 'EVENT'">
+                    <h1>{{slider.cover_photo}}</h1>
+                    <div class="description ">
+                        <h2 class="details wow fadeInDown">
+                            {{slider.title}}
+                        </h2>
+                        <div class="details wow fadeInUp">
+                            <div class="fa fa-map-marker fa-2x"></div>
+                            <p>
+                                {{slider.event_place}}
+                            </p>
+                        </div>
+                        <div class="details wow fadeInUp">
+                            <div class="fa fa-clock-o fa-2x"></div>
+                            <p>
+                                {{slider.event_date | moment: 'DD MMM YYYY'}}
+                            </p>
+                        </div>
+                        <div class="buttons ">
+                            <a ng-if="slider.about_action == 1" class="wow fadeInLeft btn eventime_button" href="#about_menu" role="button">
+                                Conocer más 
+                            </a>
+                            <a ng-if="slider.signup_action == 1" class="wow fadeInRight btn eventime_button" href="#planilla-registro" role="button">
+                                Registrate 
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fill_mask" ng-if="slider.type == 'QUOTE'">
+                    <div class="description ">           
+                        <div class="details wow fadeInUp">
+                            <blockquote>
+                                <div class="fa fa-quote-left fa-2x"></div>
+                                {{slider.quote_author}}
+                                <div class="fa fa-quote-right fa-2x"></div>
+                            </blockquote>
+                        </div>
+                        <h3>{{slider.subtitle}}</h3>
+                        <div class="buttons">
+                            <a ng-if="slider.players_action == 1" class="wow fadeInUp btn eventime_button" href="#sec_jugadores" role="button">
+                                Jugadores! 
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fill_mask" ng-if="slider.type == 'SIMPLE'">
+                    <div class="description ">
+                        <h2 class="details wow fadeInDown">
+                            {{slider.title}}
+                        </h2>
+                        <div class="details wow fadeInUp">
+                            <p>
+                                {{slider.subtitle}}
+                            </p>
+                        </div>
+                        <div class="buttons ">
+                            <a ng-if="slider.about_action == 1" class="wow fadeInLeft btn eventime_button" href="#about_menu" role="button">
+                                Conocer más 
+                            </a>
+                            <a ng-if="slider.signup_action == 1" class="wow fadeInRight btn eventime_button" href="#planilla-registro" role="button">
+                                Registrate 
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <a class="wow fadeInLeft left_arrow" href="#home_slider_main" data-slide="prev">
+            <svg width="26px" height="48">
+                <polygon points="3.3,24.5 25.5,2.3 24,0.8 0.3,24.5 24,48.2 25.5,46.7"/>
+            </svg>
+        </a>
+        <a class="wow fadeInRight right_arrow" href="#home_slider_main" data-slide="next">
+            <svg width="26px" height="48">
+                <polygon points="22.5,24.5 0.3,2.3 1.8,0.8 25.5,24.5 1.8,48.2 0.3,46.7"/>
+            </svg>
+        </a>
+    </header>
+
+
+
+    <div ng-view></div>
+
+    <footer>
+
+        <div class="footer">
+
+            <div class="creditos">
+
+                <img src="/images/slam-logo-blanco.png">
+
+                <div class="segunda-linea">
+                
+                    <p>Slam Argentino de Poesía Oral</p>
+                
+                    <p>
+                
+                        <a href="http://www.facebook.com/slam.argentino.de.poesia.oral"><i class="fa fa-facebook-square"></i></a>
+
+                        <a href=""><i class="fa fa-youtube-square"></i></a>
+                
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+    </footer>
+
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+     <script>
+       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
        (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
        r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
        }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
        ga('create', 'UA-XXXXX-X');
-       ga('send', 'pageview');</script> <script src="scripts/vendor.js"></script> <script src="scripts/scripts.js"></script> <script src="http://maps.googleapis.com/maps/api/js"></script> </body> </html>
+       ga('send', 'pageview');
+    </script>
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/moment-timezone/builds/moment-timezone-with-data-2010-2020.js"></script>
+    <script src="bower_components/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+    <script src="bower_components/underscore/underscore.js"></script>
+    <script src="bower_components/satellizer/satellizer.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <script src="scripts/config.js"></script>
+        <script src="scripts/app.js"></script>
+        <script src="scripts/services/services.js"></script>
+        <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/controllers/about.js"></script>
+        <script src="scripts/filters/moment.js"></script>
+        <script src="scripts/filters/truncate.js"></script>
+        <script src="scripts/jquery.placepicker.js"></script>
+        <!-- endbuild -->
+
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBO2zTK8uhHwhyJfJP6n_rvDhizeJdoDDw&libraries=places&language=es&region=AR&sensor=true"></script>
+</body>
+</html>

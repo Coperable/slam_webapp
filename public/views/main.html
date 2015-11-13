@@ -48,14 +48,11 @@
 
 					<span class="icon-box" ><i class="fa fa-clock-o"></i></span>
 				
-					<span class="num">23</span> 
-				
-					<span class="mes">SEP</span>
-
+					<span class="num">{{summary.next_competition.event_date | moment: 'DD'}}</span> 
+					<span class="mes">{{summary.next_competition.event_date | moment: 'MMM'}}</span> 
 					<span class="linea">|</span> 
+					<span class="hora">{{summary.next_competition.event_date | moment: 'HH:mm'}}</span> 
 
-					<span class="hora">23:00</span>
-				
 				</div>
 
 				<div class="torneo_lugar">
@@ -74,11 +71,11 @@
 
         			<h4><small>JUGADORES</small>CUPOS</h4>
 
-        			<p><small>+{{summary.next_competition.participants.length || 0}}</small>+{{summary.next_competition.users_amount - summary.next_competition.participants.length}}</p>
+        			<p><small>+{{summary.next_competition.users.length || 0}}</small>+{{summary.next_competition.users_amount - summary.next_competition.users.length}}</p>
 				
 				</div>
 
-				<a style="visibility: visible; animation-name: bounceInRight;" class="wow bounceInRight btn btn_principal animated entrada-1s animated" href="#about_menu" role="button">PARTICIPAR</a>
+				<a style="visibility: visible; animation-name: bounceInRight;" class="wow bounceInRight btn btn_principal animated entrada-1s animated" href role="button" ng-click="participate(summary.next_competition)">PARTICIPAR</a>
 
 				<div class="mini_gap"></div>
 
@@ -141,7 +138,7 @@
 
 		        			<h4>JUGADORES</h4>
 
-		        			<p>+{{past.participants.length || 0}}</p>
+		        			<p>+{{past.users.length || 0}}</p>
 						
 						</div>
 
@@ -459,45 +456,32 @@
 </div>
 
 <!-- SEC: JUGADORES -->
-<div id="sec_jugadores" class="seccion fondo_gris">
-
-	<!--<div class="first_line wow fadeInDown"></div>-->
+<div id="sec_jugadores" class="seccion fondo_gris" ng-show="summary.participants_count">
 
     <div class="contenedor_sec torneo_info_inside">
-
 	    <div class="titulo wow fadeInDown">
-
 	      	<h2 class="sombra_gris_blanco">
-	        	
 	        	<i class="icon-jugador"></i>Jugadores
-
-	        	<small class="label_region">en Argentina</small>
-	      	
+	        	<small class="label_region">en {{summary.name}}</small>
 	      	</h2>
-	    
 	    </div>
 
 	    <div class="ver_mas wow bounceInRight entrada-1s">
-
 	    	<a href="">
-
 	    		<h3><i class="fa fa-caret-right"></i>ver todos los jugadores</h3>
-	    	
 	    	</a>
-	    	
 	    </div>
 
     	<div class="row">
-
-    		<div class="col-xs-10 col-sm-5 col-md-4">
+    		<div class="col-xs-10 col-sm-5 col-md-4" ng-repeat="participant in summary.participants">
 
     			<div class="tarjeta_jugador wow fadeInLeft">
 
-    				<a href="/jugador"><img src="images/IMG-USR01.jpg"></a>
+    				<a href="/jugador"><img ng-src="http://images.collab-dev.com/150x/smart/slam/profiles/{{participant.photo}}"></a>
 
                 	<div class="jug_resumen">
 
-                		<h3>Jorge Solís</h3>
+                		<h3>{{participant.name}} {{participant.lastname}}</h3>
 
                 		<div class="data-box">
 
@@ -505,7 +489,7 @@
 
 		        			<h4>TORNEOS</h4>
 
-		        			<p>+12</p>
+		        			<p>+{{participant.competitions.length}}</p>
 						
 						</div>
 
@@ -515,187 +499,7 @@
 
 		        			<h4>VIDEOS</h4>
 
-		        			<p>+12</p>
-						
-						</div>
-
-					</div>
-
-				</div>
-
-			</div>
-
-			<div class="col-xs-10 col-sm-5 col-md-4">
-
-    			<div class="tarjeta_jugador wow fadeInLeft">
-
-    				<a href=""><img src="images/IMG-USR02.jpg"></a>
-
-                	<div class="jug_resumen">
-
-                		<h3>Jorge Solís</h3>
-
-                		<div class="data-box">
-
-		        			<span class="icon-box"><i class="icon-copa"></i></span>
-
-		        			<h4>TORNEOS</h4>
-
-		        			<p>+12</p>
-						
-						</div>
-
-						<div class="data-box">
-
-		        			<span class="icon-box"><i class="icon-video"></i></span>
-
-		        			<h4>VIDEOS</h4>
-
-		        			<p>+12</p>
-						
-						</div>
-
-					</div>
-
-				</div>
-
-			</div>
-
-			<div class="col-xs-10 col-sm-5 col-md-4">
-
-    			<div class="tarjeta_jugador wow fadeInLeft">
-
-    				<a href=""><img src="images/IMG-USR03.jpg"></a>
-
-                	<div class="jug_resumen">
-
-                		<h3>Jorge Solís</h3>
-
-                		<div class="data-box">
-
-		        			<span class="icon-box"><i class="icon-copa"></i></span>
-
-		        			<h4>TORNEOS</h4>
-
-		        			<p>+12</p>
-						
-						</div>
-
-						<div class="data-box">
-
-		        			<span class="icon-box"><i class="icon-video"></i></span>
-
-		        			<h4>VIDEOS</h4>
-
-		        			<p>+12</p>
-						
-						</div>
-
-					</div>
-
-				</div>
-
-			</div>
-
-			<div class="col-xs-10 col-sm-5 col-md-4">
-
-    			<div class="tarjeta_jugador wow fadeInLeft">
-
-    				<a href=""><img src="images/IMG-USR04.jpg"></a>
-
-                	<div class="jug_resumen">
-
-                		<h3>Jorge Solís</h3>
-
-                		<div class="data-box">
-
-		        			<span class="icon-box"><i class="icon-copa"></i></span>
-
-		        			<h4>TORNEOS</h4>
-
-		        			<p>+12</p>
-						
-						</div>
-
-						<div class="data-box">
-
-		        			<span class="icon-box"><i class="icon-video"></i></span>
-
-		        			<h4>VIDEOS</h4>
-
-		        			<p>+12</p>
-						
-						</div>
-
-					</div>
-
-				</div>
-
-			</div>
-
-			<div class="col-xs-10 col-sm-5 col-md-4">
-
-    			<div class="tarjeta_jugador wow fadeInLeft">
-
-    				<a href=""><img src="images/avatar-default.png"></a>
-
-                	<div class="jug_resumen">
-
-                		<h3>Jorge Solís</h3>
-
-                		<div class="data-box">
-
-		        			<span class="icon-box"><i class="icon-copa"></i></span>
-
-		        			<h4>TORNEOS</h4>
-
-		        			<p>+12</p>
-						
-						</div>
-
-						<div class="data-box">
-
-		        			<span class="icon-box"><i class="icon-video"></i></span>
-
-		        			<h4>VIDEOS</h4>
-
-		        			<p>+12</p>
-						
-						</div>
-
-					</div>
-
-				</div>
-
-			</div>
-
-			<div class="col-xs-10 col-sm-5 col-md-4">
-
-    			<div class="tarjeta_jugador wow fadeInLeft">
-
-    				<a href=""><img src="images/avatar-default.png"></a>
-
-                	<div class="jug_resumen">
-
-                		<h3>Jorge Solís</h3>
-
-                		<div class="data-box">
-
-		        			<span class="icon-box"><i class="icon-copa"></i></span>
-
-		        			<h4>TORNEOS</h4>
-
-		        			<p>+12</p>
-						
-						</div>
-
-						<div class="data-box">
-
-		        			<span class="icon-box"><i class="icon-video"></i></span>
-
-		        			<h4>VIDEOS</h4>
-
-		        			<p>+12</p>
+		        			<p>+{{participant.medias.length}}</p>
 						
 						</div>
 
@@ -717,53 +521,81 @@
 
 
 <!-- SEC: REGISTRO -->
-<div id="planilla-registro" class="seccion planilla">
-
-	<div class="contenedor_sec">
- 	
+<div id="planilla-registro" class="seccion planilla" ng-show="!isAuthenticated()">
+    <div class="contenedor_sec">
 	 	<div class="titulo wow fadeInLeftBig">
-
 	      	<h2 class="sombra_blanco_gris">
-	        	
 	        	<i class="fa fa-user-plus"></i>REGISTRATE
-	      	
 	      	</h2>
 
 	      	<p>¿Querés participar?</p>
-
 	      	<p><small>REGISTRATE PARA CREAR TU PERFIL DE JUGADOR Y PARTICIPAR DE LOS TORNEOS.</small></p>
-	    
 	    </div>
 
 		<div id="torneo-inner">
 
-			<form>
-
-				<div class="row">
-
-					<div class="col-lg-5 col-md-6 wow fadeInRightBig">
-
+            <div class="row wow fadeInRightBig">
+                <div class="col-lg-5 col-md-6" data-ng-controller="SignupCtrl">
+                    <form method="post" ng-submit="signup()" name="signupForm">
 					  	<div class="form-group">
-
-					    	<label for="nombre">Nombre:</label>
-
-					 		<input type="text" class="form-control" id="nombre" placeholder="NOMBRE">
-
+					    	<label for="nombre">Nombre Usuario:</label>
+					 		<input type="text" class="form-control" ng-model="username" id="nombre" placeholder="APODO">
 					  	</div>
 
 					  	<div class="form-group">
+					    	<label for="email">email:</label>
+					 		<input type="email" class="form-control" ng-model="email" id="email" placeholder="EMAIL">
+					  	</div>
 
+					  	<div class="form-group">
+					    	<label for="contrasenia">Contraseña:</label>
+					 		<input type="password" class="form-control" ng-model="password" id="contrasenia" placeholder="***">
+					  	</div>
+
+					  	<div class="form-group">
+					    	<label for="contraseniaConf">Confirmar contraseña:</label>
+					 		<input type="password" class="form-control" ng-model="confirmPassword" id="contraseniaConf" placeholder="***">
+					  	</div>
+
+					  	<div class="form-group">
+					    	<label for="apellido">Nombre:</label>
+					 		<input type="text" class="form-control" ng-model="name" id="apellido" placeholder="APELLIDO">
+					  	</div>
+
+					  	<div class="form-group">
 					    	<label for="apellido">Apellido:</label>
-
-					 		<input type="text" class="form-control" id="apellido" placeholder="APELLIDO">
-
+					 		<input type="text" class="form-control" ng-model="lastname" id="nombre" placeholder="NOMBRE">
 					  	</div>
+
+					  	<div class="checkbox wow fadeInLeft entrada-1s">
+						    <label>
+						    	<input type="checkbox"> <span>Acepto los <a href="">Términos y condiciones</a> del servicio.</span>
+						    </label>
+						</div>
+
+						<div class="mini_gap"></div>
+                        <button type="submit" ng-disabled="signupForm.$invalid" class="wow bounceInRight btn btn_principal btn-primary animated entrada-1s">REGISTRARME</button>
+
+                    </form>
+                </div>
+
+                <div class="col-lg-5 col-md-6" data-ng-controller="LoginCtrl">
+
+                    <a href class="contact_icon fa fa-facebook wow fadeInUp"  ng-click="authenticate('facebook')">
+                    </a>
+                    <a href class="contact_icon fa fa-twitter wow fadeInUp" ng-click="authenticate('twitter')">
+                    </a>
+                    <a href class="contact_icon fa fa-google-plus wow fadeInUp" ng-click="authenticate('google')">
+                    </a>
+
+                    <form method="post" ng-submit="login()" name="loginForm">
+
 
 					  	<div class="form-group">
 
 					    	<label for="email">email:</label>
 
-					 		<input type="email" class="form-control" id="email" placeholder="EMAIL">
+					 		<input type="email" class="form-control" id="email" ng-model="email" placeholder="EMAIL">
 
 					  	</div>
 
@@ -771,37 +603,20 @@
 
 					    	<label for="contrasenia">Contraseña:</label>
 
-					 		<input type="password" class="form-control" id="contrasenia" placeholder="***">
+					 		<input type="password" class="form-control" id="contrasenia" ng-model="password" placeholder="***">
 
 					  	</div>
-
-					  	<div class="form-group">
-
-					    	<label for="contraseniaConf">Confirmar contraseña:</label>
-
-					 		<input type="password" class="form-control" id="contraseniaConf" placeholder="***">
-
-					  	</div>
-
-					  	<div class="checkbox wow fadeInLeft entrada-1s">
-						    
-						    <label>
-						    
-						    	<input type="checkbox"> <span>Acepto los <a href="">Términos y condiciones</a> del servicio.</span>
-						    
-						    </label>
-						
-						</div>
 
 						<div class="mini_gap"></div>
 
-						<a style="visibility: visible; animation-name: bounceInRight;" class="wow bounceInRight btn btn_principal animated entrada-1s animated" href="#about_menu" role="button">REGISTRARME</a>
+						<!--a style="visibility: visible; animation-name: bounceInRight;" class="wow bounceInRight btn btn_principal animated entrada-1s animated block-center" role="button">INGRESAR</a-->
+                        <button type="submit" ng-disabled="loginForm.$invalid" class="wow bounceInRight btn btn_principal btn-primary animated entrada-1s">INGRESAR</button>
 
-					</div>
+                    </form>
 
-				</div>
+                </div>
 
-			</form>
+            </div>
 
 		</div>
 
@@ -846,7 +661,7 @@
 </div>
 
 <!-- SEC: VIEDEO -->
-<div id="sec_videos" class="seccion fondo_gris">
+<div id="sec_videos" class="seccion fondo_gris" ng-show="summary.videos_count">
 
 	<!--<div class="first_line wow fadeInDown"></div>-->
 
@@ -858,7 +673,7 @@
 	        	
 	        	<i class="icon-jugador"></i>Videos
 
-	        	<small class="label_region">en Argentina</small>
+	        	<small class="label_region">en {{summary.name}}</small>
 	      	
 	      	</h2>
 	    
@@ -878,84 +693,13 @@
 
     	<div class="row">
 
-    		<div class="col-xs-11 col-md-6 col-lg-4">
+    		<div class="col-xs-11 col-md-6 col-lg-4" ng-repeat="video in summary.videos |limitTo: 6">
 
     			<div class="tarjeta_video wow fadeInLeft">
 
-    				<div class="embed-responsive embed-responsive-16by9">
+    				<div class="embed-responsive embed-responsive-16by9" style="min-height:246px;">
 
-					  	<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/1g7wpkLa0r8" allowfullscreen></iframe>
-
-					</div>
-
-				</div>
-
-			</div>
-
-			<div class="col-xs-11 col-md-6 col-lg-4">
-
-    			<div class="tarjeta_video wow fadeInLeft">
-
-    				<div class="embed-responsive embed-responsive-16by9">
-
-					  	<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/EayB4xrcxX4" allowfullscreen></iframe>
-
-					</div>
-
-				</div>
-
-			</div>
-
-			<div class="col-xs-11 col-md-6 col-lg-4">
-
-    			<div class="tarjeta_video wow fadeInLeft">
-
-    				<div class="embed-responsive embed-responsive-16by9">
-
-					  	<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/reIP1rbemRs" allowfullscreen></iframe>
-
-					</div>
-
-				</div>
-
-			</div>
-
-			<div class="col-xs-11 col-md-6 col-lg-4">
-
-    			<div class="tarjeta_video wow fadeInLeft">
-
-    				<div class="embed-responsive embed-responsive-16by9">
-
-					  	<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/P2Q4uEicn3I" allowfullscreen></iframe>
-
-					</div>
-
-				</div>
-
-			</div>
-
-			<div class="col-xs-11 col-md-6 col-lg-4">
-
-    			<div class="tarjeta_video wow fadeInLeft">
-
-    				<div class="embed-responsive embed-responsive-16by9">
-
-					  	<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/rI57qseVg1U" allowfullscreen></iframe>
-
-					</div>
-
-				</div>
-
-			</div>
-
-			<div class="col-xs-11 col-md-6 col-lg-4">
-
-    			<div class="tarjeta_video wow fadeInLeft">
-
-    				<div class="embed-responsive embed-responsive-16by9">
-
-					  	<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/iZ5yVp1COaU" allowfullscreen></iframe>
-
+					  	<iframe class="embed-responsive-item" ng-src="{{getYoutubeSrc(video)}}" allowfullscreen></iframe>
 					</div>
 
 				</div>

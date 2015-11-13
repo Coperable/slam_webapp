@@ -8,6 +8,7 @@ use DB;
 use Illuminate\Support\Collection;
 use Slam\User;
 use Slam\Model\Region;
+use Slam\Model\Competition;
 
 class RegionController extends Controller {
 
@@ -23,24 +24,33 @@ class RegionController extends Controller {
 	public function show($id) {
         $region = Region::find($id);
         $region->competitions;
-        Log::info($region);
         return $region;
 	}
 
 	public function summary($regionId) {
         $region = Region::find($regionId);
         
-        $videos = array();
-        $participants = array();
+        $participants = new Collection();
         $past_competitions = new Collection();
         $next_competitions = new Collection();
         $next_competition = array();
-        $region->competitions->each(function($competition) use ($region, $past_competitions, $next_competitions, $videos, $participants)  {
-            array_push($participants, $competition->participants);
-            array_push($videos, $competition->videos);
+        $competitions = array();
 
+        if($regionId == 1) {
+            $competitions = Competition::all();
+            $videos = DB::table('medias')->where('region_id', '<>', $region->id)->get();
+            $region->competitions = $competitions;
+        } else {
+            $competitions = $region->competitions;
+            $videos = DB::table('medias')->where('region_id', '=', $region->id)->get();
+        }
+        $competitions->each(function($competition) use ($past_competitions, $next_competitions, $participants)  {
+            $competition->users->each(function($participant) use ($participants) {
+                $participant->medias;
+                $participant->competitions;
+                $participants->push($participant);
+            });
             $competition->location;
-            
             if (Carbon::now()->gte($competition->event_date)) {
                 $competition->past = true;
                 $past_competitions->push($competition);
@@ -49,13 +59,18 @@ class RegionController extends Controller {
                 $next_competitions->push($competition);
             }
         });
+
+        Log::info($participants);
+
+
         $region->next_competition = $next_competitions->first();
         $region->next_competitions = $next_competitions;
         $region->past_competitions = $past_competitions;
         $region->videos = $videos;
         $region->videos_count  = count($videos);
-        $region->participants = $participants;
-        $region->participants_count = count($participants);
+        $region->competitions_count = count($competitions);
+        $region->participants = $participants->unique();
+        $region->participants_count = count($region->participants);
     
         return $region;
 	}
@@ -69,8 +84,8 @@ class RegionController extends Controller {
 
             $region->name = $request->input('name');
             $region->description = $request->input('description');
-            $region->color = $request->input('color');
-            $region->icon = $request->input('icon');
+            $region->color = $request->input('color')['code'];
+            $region->icon = $request->input('icon')['code'];
             $region->parent_id = $request->input('parent_id');
             $region->save();
                  

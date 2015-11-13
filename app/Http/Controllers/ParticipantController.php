@@ -53,9 +53,15 @@ class ParticipantController extends Controller {
         User::destroy($id);
 	}
 
+    public function getProfile(Request $request) {
+        $user = User::find($request['user']['sub']);
+        $user->roles;
+        $user->videos;
+        $user->competitions;
+        $user->regions;
+        return array(
+            'user' => $user
+        );
+    }
 
 }
-
-
-
-

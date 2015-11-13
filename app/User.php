@@ -119,6 +119,14 @@ class User extends Model implements AuthenticatableContract,
         return $notification;
     }
 
+    public function competitions() {
+        return $this->belongsToMany('Slam\Model\Competition', 'users_competitions');
+    }
+
+    public function medias() {
+        return $this->belongsToMany('Slam\Model\Media', 'users_medias');
+    }
+
 
 
 }

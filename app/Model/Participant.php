@@ -7,7 +7,7 @@ class Participant extends Model {
     protected $table = 'users';
     
     public function competitions() {
-        return $this->belongsToMany('Slam\Model\Competition', 'regions_competitions');
+        return $this->belongsToMany('Slam\Model\Competition', 'users_competitions');
     }
 
 }

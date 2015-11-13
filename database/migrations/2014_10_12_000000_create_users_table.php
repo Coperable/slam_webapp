@@ -11,7 +11,7 @@ class CreateUsersTable extends Migration {
             $table->string('username');
             $table->string('name');
             $table->string('lastname');
-            $table->string('coperable_id');
+            $table->string('coperable_id')->nullable();
             $table->string('email')->unique();
             $table->string('password', 60);
             $table->rememberToken();
@@ -22,11 +22,11 @@ class CreateUsersTable extends Migration {
 			$table->string('instagram')->nullable();
 
             $table->mediumtext('cover_photo');
-            $table->string('photo')->default('placeholder-square.jpg');
+            $table->string('photo')->nullable();
 
 			$table->dateTime('last_access')->nullable();
 
-            $table->string('activation_code');
+            $table->string('activation_code')->nullable();
             $table->boolean('active')->default(false);
 
             $table->boolean('participant')->default(false);

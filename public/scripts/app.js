@@ -1,15 +1,7 @@
 'use strict';
 
-/**
- * @ngdoc overview
- * @name slamApp
- * @description
- * # slamApp
- *
- * Main module of the application.
- */
 angular
-  .module('slamApp', [
+.module('slamApp', [
     'ngAnimate',
     'ngAria',
     'ngCookies',
@@ -17,62 +9,112 @@ angular
     'ngResource',
     'ngRoute',
     'ngSanitize',
-    'satellizer',
     'config',
-    'ngTouch'
-  ])
-  .config(function ($routeProvider, $locationProvider) {
+    'ngTouch',
+    'ui.router',
+    //'ui.bootstrap',
+    'satellizer'
+])
+.config(function($routeProvider, $authProvider, $locationProvider) {
     $routeProvider
-      .when('/', {
+    .when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
         controllerAs: 'main'
-      })
-      .when('/profile', {
+    })
+    .when('/profile', {
         templateUrl: 'views/profile.html',
         controller: 'profile-view'
-      })
-      .when('/foro', {
+    })
+    .when('/foro', {
         templateUrl: 'views/foro.html',
         controller: 'foro-view'
-      })
-      .when('/revista', {
+    })
+    .when('/revista', {
         templateUrl: 'views/revista.html',
         controller: 'revista-view'
-      })
-      .when('/torneo', {
+    })
+    .when('/torneo', {
         templateUrl: 'views/torneo.html',
         controller: 'torneo-view'
-      })
-      .when('/jugador', {
+    })
+    .when('/jugador', {
         templateUrl: 'views/jugador.html',
         controller: 'jugador-view'
-      })
-      .when('/jugadores', {
+    })
+    .when('/jugadores', {
         templateUrl: 'views/jugadores.html',
         controller: 'jugador-list'
-      })
-      .when('/torneos', {
+    })
+    .when('/torneos', {
         templateUrl: 'views/torneos.html',
         controller: 'torneo-list'
-      })
-      .when('/videos', {
+    })
+    .when('/videos', {
         templateUrl: 'views/videos.html',
         controller: 'video-list'
-      })
-      .when('/registro', {
+    })
+    .when('/registro', {
         templateUrl: 'views/registro.html',
         controller: 'user-signup'
-      })
-      .when('/about', {
+    })
+    .when('/about', {
         templateUrl: 'views/about.html',
         controller: 'AboutCtrl',
         controllerAs: 'about'
-      })
-      .otherwise({
+    })
+    .otherwise({
         redirectTo: '/'
-      });
+    });
 
     $locationProvider.html5Mode(true);
 
-  });
+
+    function skipIfLoggedIn($q, $auth) {
+        var deferred = $q.defer();
+        if ($auth.isAuthenticated()) {
+            deferred.reject();
+        } else {
+            deferred.resolve();
+        }
+        return deferred.promise;
+    }
+
+    function loginRequired($q, $location, $auth) {
+        var deferred = $q.defer();
+        if ($auth.isAuthenticated()) {
+            deferred.resolve();
+        } else {
+            $location.path('/login');
+        }
+        return deferred.promise;
+    }
+
+
+
+})
+.config(function ($authProvider, api_host) {
+
+    $authProvider.baseUrl = api_host+'/';
+    $authProvider.httpInterceptor = true;
+    $authProvider.signupRedirect = null;
+
+    $authProvider.facebook({
+        url: '/auth/social/facebook',
+        clientId: '295482087249664',
+        scope: 'email,public_profile'
+    });
+
+    $authProvider.google({
+        url: '/auth/social/google',
+        clientId: '313110710680-p22p1s5brqn7tfaqj9v16u67bic5smqk.apps.googleusercontent.com'
+    });
+
+    $authProvider.twitter({
+        url: '/auth/social/twitter'
+    });
+
+
+})
+
+;
