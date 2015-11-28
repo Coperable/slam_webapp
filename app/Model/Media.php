@@ -12,4 +12,8 @@ class Media extends Model {
         return $this->belongsTo('Busca\User');
     }
 
+    public function users() {
+        return $this->belongsToMany('Slam\User', 'users_medias');
+    }
+
 }

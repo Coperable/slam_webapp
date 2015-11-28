@@ -23,7 +23,6 @@ class CreateCompetitionsTable extends Migration {
             $table->mediumtext('cover_photo')->nullable();
 
             $table->string('place')->nullable();
-
             $table->integer('location_id')->unsigned();
             $table->foreign('location_id')->references('id')->on('locations');
 

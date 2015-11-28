@@ -3,7 +3,6 @@
 Route::post('auth/twitter', 'Auth\AuthController@twitter');
 Route::post('auth/facebook', 'Auth\AuthController@facebook');
 Route::post('auth/google', 'Auth\AuthController@google');
-
 Route::post('auth/social/{name}', 'Auth\AuthController@doSocial');
 
 Route::post('auth/login', 'Auth\AuthController@login');
@@ -30,6 +29,10 @@ Route::resource('api/sliders', 'SliderController');
 
 Route::get('api/regions/{regionId}/competitions', ['middleware' => 'auth', 'uses' => 'RegionController@competitions']);
 Route::post('api/competition/{competitionId}/video', ['middleware' => 'auth', 'uses' => 'CompetitionController@addVideo']);
+Route::post('api/competition/{competitionId}/remove/video/{videoId}', ['middleware' => 'auth', 'uses' => 'CompetitionController@removeVideo']);
+Route::post('api/competition/{competitionId}/video/{videoId}/participant/{participantId}', ['middleware' => 'auth', 'uses' => 'CompetitionController@addVideoParticipant']);
+Route::post('api/competition/{competitionId}/video/{videoId}/remove/participant/{participantId}', ['middleware' => 'auth', 'uses' => 'CompetitionController@removeVideoParticipant']);
+
 Route::post('api/competition/{competitionId}/participate', ['middleware' => 'auth', 'uses' => 'CompetitionController@participate']);
 
 Route::post('api/media/upload', ['middleware' => 'auth', 'uses' => 'MediaController@storeImage']);

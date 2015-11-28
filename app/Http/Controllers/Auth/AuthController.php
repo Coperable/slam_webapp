@@ -153,6 +153,7 @@ class AuthController extends Controller
         $user->username = $request->input('username');
         $user->email = $request->input('email');
         $user->password = Hash::make($request->input('password'));
+        $user->participant = 1;
         $user->save();
 
         //$this->dispatch(new UpdateProfilePicture($user));
@@ -223,6 +224,7 @@ class AuthController extends Controller
             $user->name = $profile->getName();
             $user->email = $profile->getEmail();
             $user->photo = $profile->getAvatar();
+            $user->participant = 1;
 
             $user->save();
 

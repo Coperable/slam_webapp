@@ -9,6 +9,7 @@ use Illuminate\Support\Collection;
 use Slam\User;
 use Slam\Model\Competition;
 use Slam\Model\Media;
+use Slam\Model\UserMedia;
 use Slam\Model\Location;
 use Slam\Model\UserCompetition;
 
@@ -27,8 +28,12 @@ class CompetitionController extends Controller {
         $competition = Competition::find($id);
         $competition->region;
         $competition->videos;
+        foreach($competition->videos as $video) {
+            $video->users;
+        }
+
         $competition->location;
-        $competition->participants;
+        $competition->users;
         return $competition;
 	}
 
@@ -175,7 +180,46 @@ class CompetitionController extends Controller {
 
     }
 
+    public function removeVideo(Request $request, $competitionId, $videoId) {
 
+        DB::transaction(function() use ($request, $competitionId, $videoId) {
+
+            $video = Media::find($videoId);
+            $video->competition_id = null;
+            $video->region_id = null;
+            $video->save();
+
+        });
+
+        return Media::where('competition_id', $competitionId)->where('type', 'VIDEO')->get();
+    }
+
+
+	public function addVideoParticipant(Request $request, $competitionId, $videoId, $participantId) {
+        $user = User::find($request['user']['sub']);
+        $competition = Competition::find($competitionId);
+        DB::transaction(function() use ($request, $competition, $videoId, $participantId) {
+            $video = UserMedia::create([
+                'media_id' => $videoId,
+                'user_id' => $participantId
+            ]);
+        });
+ 
+        $media = Media::find($videoId);
+        $media->users;
+        return $media;
+
+    }
+
+    public function removeVideoParticipant(Request $request, $competitionId, $videoId, $participantId) {
+        DB::transaction(function() use ($request, $participantId, $videoId) {
+            UserMedia::where('media_id', $videoId)->where('user_id', $participantId)->delete();
+        });
+        $media = Media::find($videoId);
+        $media->users;
+    
+        return $media;
+    }
 
 
 }

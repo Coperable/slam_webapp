@@ -55,8 +55,6 @@ return [
         Laravel\Socialite\SocialiteServiceProvider::class,
 
 
-
-
         /*
          * Application Service Providers...
          */
@@ -116,7 +114,6 @@ return [
         'Carbon'    => Carbon\Carbon::class,
         'JWT'       => \Firebase\JWT\JWT::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
-
 
     ],
 

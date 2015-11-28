@@ -95,12 +95,14 @@ class RegionController extends Controller {
 	}
 
 	public function update(Request $request, $id) {
+        $user = User::find($request['user']['sub']);
         $region = Region::find($id);
+
         DB::transaction(function() use ($request, $region, $user) {
             $region->name = $request->input('name');
             $region->description = $request->input('description');
-            $region->color = $request->input('color');
-            $region->icon = $request->input('icon');
+            $region->color = $request->input('color')['code'];
+            $region->icon = $request->input('icon')['code'];
             $region->parent_id = $request->input('parent_id');
             $region->save();
         });

@@ -14,16 +14,16 @@ class DatabaseSeeder extends Seeder
     {
         Model::unguard();
 
-		$this->call('UsersTableSeeder');
+	$this->call('UsersTableSeeder');
         $this->command->info('Users seeded!');
 
-		$this->call('RegionsTableSeeder');
+	$this->call('RegionsTableSeeder');
         $this->command->info('Regions seeded!');
 
-		$this->call('RolesTableSeeder');
+	$this->call('RolesTableSeeder');
         $this->command->info('Roles seeded!');
 
-		$this->call('ColorsTableSeeder');
+	$this->call('ColorsTableSeeder');
         $this->command->info('Colors seeded!');
 
         Model::reguard();
