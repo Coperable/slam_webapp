@@ -16,20 +16,14 @@
 	    <!-- FILTROS: -->
 	    <div class="form-group">
 	    	
-	    	<a class="btn eventime_button btn_filtro" href="#about_menu" role="button"><i class="fa fa-sort-alpha-asc"></i></a>
-
-	    	<a class="btn eventime_button btn_filtro" href="#about_menu" role="button"><i class="fa fa-sort-alpha-desc"></i></a>
-
-	    	<a class="btn eventime_button btn_filtro" href="#about_menu" role="button"><i class="fa fa-clock-o"></i> Recientes</a>
-
-	    	<a class="btn eventime_button btn_filtro" href="#about_menu" role="button"><i class="icon-copa"></i> Ranking</a>
+	    	<a class="btn eventime_button btn_filtro" href role="button" ng-click="direction(false)"><i class="fa fa-sort-alpha-asc"></i></a>
+	    	<a class="btn eventime_button btn_filtro" href role="button" ng-click="direction(true)"><i class="fa fa-sort-alpha-desc"></i></a>
+	    	<a class="btn eventime_button btn_filtro" href role="button" ng-click="sort('date')"><i class="fa fa-clock-o"></i> Recientes</a>
+	    	<a class="btn eventime_button btn_filtro" href role="button" ng-click="sort('ranking')"><i class="icon-copa"></i> Ranking</a>
 
 	    	<div class="input-group busqueda">
-	    	
-	    		<input type="text" class="form-control" id="direccion" placeholder="BÚSQUEDA">
-
-	    		<div class="input-group-addon"><i class="fa fa-search"></i></div>
-
+	    		<input type="text" ng-model="search_term" class="form-control" id="direccion" placeholder="BÚSQUEDA">
+	    		<div class="input-group-addon" ng-click="doSearch()"><i class="fa fa-search"></i></div>
 	    	</div>
 
 	    </div>

@@ -317,8 +317,25 @@ angular.module('slamApp')
     }
     Account.logout();
 })
-.controller('jugador-view', function ($scope, $rootScope) {
+.controller('jugador-view', function ($scope, $rootScope, $routeParams, $http, $sce, api_host, Participant) {
 	$rootScope.home_page = false;
+    
+    $scope.participant = {};
+
+    $scope.getYoutubeSrc = function(video) {
+        return $sce.trustAsResourceUrl("http://www.youtube.com/embed/"+video.name);
+    };
+
+    Participant.get({
+        id: $routeParams.id
+    }, function(participant ) {
+        $scope.participant = participant;
+        jQuery("#preloader").fadeOut("fast",function(){
+            jQuery(this).remove()
+        });
+    });
+
+
 })
 .controller('revista-view', function ($scope, $rootScope) {
 	$rootScope.home_page = false;

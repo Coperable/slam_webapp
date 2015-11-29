@@ -229,7 +229,7 @@ module.exports = function (grunt) {
       }
     },
 
-
+    
     less: {
         server: {
             options: {
@@ -495,7 +495,6 @@ module.exports = function (grunt) {
         build: {
         }
     },
-
 
     // Test settings
     karma: {

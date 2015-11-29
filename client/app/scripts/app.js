@@ -38,7 +38,7 @@ angular
         templateUrl: 'views/torneo.html',
         controller: 'torneo-view'
     })
-    .when('/jugador', {
+    .when('/jugador/:id', {
         templateUrl: 'views/jugador.html',
         controller: 'jugador-view'
     })

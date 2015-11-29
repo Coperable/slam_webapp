@@ -1,6 +1,6 @@
 
 <!-- SEC: TORNEO PRINCIPAL -->
-<div id="sec_torneoPrincipal" class="seccion">
+<div id="sec_torneoPrincipal" class="seccion"  ng-if="summary.next_competition">
 
     <div class="contenedor_sec torneo_principal torneo_info_inside">
 
@@ -124,9 +124,9 @@
 
     		<div class="col-xs-10 col-sm-5 col-md-4" ng-repeat="past in summary.past_competitions">
 
-    			<a href="/torneo" class="no_opacity_hover">
+    			<a ng-href="/#/torneo/{{past.id}}" class="no_opacity_hover">
 
-    			<div class="tarjeta_torneo torneo_info_inside" fecha="25 JUL">
+    			<div class="tarjeta_torneo torneo_info_inside" fecha="{{competition.event_date | moment: 'DD MMM'}}">
                  	
                     <h4 class="torneo_nombre">{{past.title}}</h4>
 
@@ -180,7 +180,7 @@
 
 							<span class="icon-box" ><i class="fa fa-clock-o"></i></span>
 
-							<span class="hora">23:00</span>
+							<span class="hora">{{past.event_date | moment: 'HH:mm'}}</span>
 						
 						</div>
 
@@ -198,7 +198,7 @@
 							
 							<span class="icon-box">#</span>
 
-							<span class="aclaracion">{{torneo.hashtag}}</span>
+							<span class="aclaracion">{{past.hashtag}}</span>
 
 						</div>
 
@@ -477,7 +477,7 @@
 
     			<div class="tarjeta_jugador wow fadeInLeft">
 
-    				<a href="/jugador"><img ng-src="http://images.collab-dev.com/150x/smart/slam/profiles/{{participant.photo}}"></a>
+    				<a ng-href="/#/jugador/{{participant.id}}"><img ng-src="http://images.collab-dev.com/150x/smart/slam/profiles/{{participant.photo}}"></a>
 
                 	<div class="jug_resumen">
 

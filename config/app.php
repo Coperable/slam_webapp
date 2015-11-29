@@ -9,6 +9,11 @@ return [
 	'twitter_secret' => env('TWITTER_SECRET', ''),
 	'twitter_callback' => env('TWITTER_CALLBACK', ''),
 
+	'discourse_api_key' => env('DISCOURSE_API_KEY', ''),
+	'discourse_api_username' => env('DISCOURSE_API_USERNAME', ''),
+	'discourse_host' => env('DISCOURSE_HOST', ''),
+
+
     'debug' => env('APP_DEBUG', false),
 
 	'url' => env('URL_BASE', 'http://localhost'),

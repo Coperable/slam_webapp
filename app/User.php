@@ -127,6 +127,9 @@ class User extends Model implements AuthenticatableContract,
         return $this->belongsToMany('Slam\Model\Media', 'users_medias');
     }
 
+    public function videos() {
+        return $this->belongsToMany('Slam\Model\Media', 'users_medias');
+    }
 
 
 }
