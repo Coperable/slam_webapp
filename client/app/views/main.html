@@ -18,7 +18,7 @@
 
 	    <div class="ver_mas wow bounceInRight entrada-1s">
 
-	    	<a href="">
+	    	<a ng-href="/#/torneos">
 
 	    		<h3><i class="fa fa-caret-right"></i>ver todos los torneos</h3>
 	    	
@@ -112,7 +112,7 @@
 
 	    <div class="ver_mas wow bounceInRight entrada-1s">
 
-	    	<a href="">
+	    	<a href="/#/torneos">
 
 	    		<h3><i class="fa fa-caret-right"></i>ver todos los torneos</h3>
 	    	
@@ -126,7 +126,7 @@
 
     			<a ng-href="/#/torneo/{{past.id}}" class="no_opacity_hover">
 
-    			<div class="tarjeta_torneo torneo_info_inside" fecha="{{competition.event_date | moment: 'DD MMM'}}">
+    			<div class="tarjeta_torneo torneo_info_inside" fecha="{{past.event_date | moment: 'DD MMM'}}">
                  	
                     <h4 class="torneo_nombre">{{past.title}}</h4>
 
@@ -467,7 +467,7 @@
 	    </div>
 
 	    <div class="ver_mas wow bounceInRight entrada-1s">
-	    	<a href="">
+	    	<a ng-href="/#/jugadores">
 	    		<h3><i class="fa fa-caret-right"></i>ver todos los jugadores</h3>
 	    	</a>
 	    </div>
@@ -574,7 +574,7 @@
 						</div>
 
 						<div class="mini_gap"></div>
-                        <button type="submit" ng-disabled="signupForm.$invalid" class="wow bounceInRight btn btn_principal btn-primary animated entrada-1s">REGISTRARME</button>
+                        <button type="submit" ng-disabled="signupForm.$invalid" class="wow bounceInRight btn btn_principal btn-primary animated entrada-1s btn-large">REGISTRARME</button>
 
                     </form>
                 </div>
@@ -679,7 +679,7 @@
 
 	    <div class="ver_mas wow bounceInRight entrada-1s5">
 
-	    	<a href="">
+	    	<a ng-href="/#/videos">
 
 	    		<h3><i class="fa fa-caret-right"></i>ver todos los videos</h3>
 	    	

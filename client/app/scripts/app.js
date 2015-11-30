@@ -34,7 +34,7 @@ angular
         templateUrl: 'views/revista.html',
         controller: 'revista-view'
     })
-    .when('/torneo', {
+    .when('/torneo/:id', {
         templateUrl: 'views/torneo.html',
         controller: 'torneo-view'
     })

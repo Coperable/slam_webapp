@@ -51,6 +51,7 @@ class RegionController extends Controller {
                 $participants->push($participant);
             });
             $competition->location;
+            $competition->videos;
             if (Carbon::now()->gte($competition->event_date)) {
                 $competition->past = true;
                 $past_competitions->push($competition);

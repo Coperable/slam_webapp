@@ -4,5 +4,6 @@ use Illuminate\Database\Eloquent\Model;
  
 class Cup extends Model {
 
+    public $timestamps = false;
 
 }

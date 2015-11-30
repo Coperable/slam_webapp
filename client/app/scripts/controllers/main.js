@@ -341,13 +341,59 @@ angular.module('slamApp')
 	$rootScope.home_page = false;
 
 })
-.controller('torneo-view', function ($scope, $rootScope) {
+.controller('torneo-view', function ($scope, $rootScope, $routeParams, $http, $sce, api_host, Competition) {
 	$rootScope.home_page = false;
+    
+    $scope.competition = {};
+
+    $scope.getYoutubeSrc = function(video) {
+        return $sce.trustAsResourceUrl("http://www.youtube.com/embed/"+video.name);
+    };
+
+    Competition.get({
+        id: $routeParams.id
+    }, function(competition) {
+        $scope.competition = competition;
+        jQuery("#preloader").fadeOut("fast",function(){
+            jQuery(this).remove()
+        });
+    });
+
+    $scope.participate = function(competition) {
+        $http.post(api_host+'/api/competition/'+competition.id+'/participate', {})
+        .success(function(data) {
+            console.log(data);
+        })
+        .error(function(error) {
+            console.log(error);
+        });
+    };
+
+
 
 })
-.controller('torneo-list', function ($scope, $rootScope) {
+
+.controller('torneo-list', function ($scope, $rootScope, $http, api_host, Region, Account) {
 	$rootScope.home_page = false;
+
+    $rootScope.$on("region_summary", function(event, summary) {
+        $scope.processSummary();
+    });
+
+    $scope.processSummary = function() {
+        $scope.summary = $rootScope.region_summary;
+        jQuery("#preloader").fadeOut("fast",function(){
+            jQuery(this).remove()
+        });
+    };
+
+    $scope.processSummary();
+
 })
+
+
+
+
 .controller('user-signup', function ($scope, $rootScope) {
 	$rootScope.home_page = false;
 })

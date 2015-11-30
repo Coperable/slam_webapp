@@ -26,6 +26,8 @@ Route::resource('api/roles', 'RoleController');
 Route::resource('api/colors', 'ColorController');
 Route::resource('api/icons', 'IconController');
 Route::resource('api/sliders', 'SliderController');
+Route::resource('api/cups', 'CupController');
+Route::resource('api/mentions', 'MentionController');
 
 Route::get('api/regions/{regionId}/competitions', ['middleware' => 'auth', 'uses' => 'RegionController@competitions']);
 Route::post('api/competition/{competitionId}/video', ['middleware' => 'auth', 'uses' => 'CompetitionController@addVideo']);
