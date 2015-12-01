@@ -17,6 +17,11 @@ angular
 ])
 .config(function($routeProvider, $authProvider, $locationProvider) {
     $routeProvider
+    .when('/home', {
+        templateUrl: 'views/main.html',
+        controller: 'MainCtrl',
+        controllerAs: 'main'
+    })
     .when('/', {
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
@@ -114,7 +119,16 @@ angular
         url: '/auth/social/twitter'
     });
 
-
 })
+.run(function($rootScope, $location, $anchorScroll) {
+    $rootScope.$on('$routeChangeSuccess', function(newRoute, oldRoute) {
+        if($location.hash()) {
+            $anchorScroll();
+        } else {
+            window.scrollTo(0, 0);
+
+        }
+    });
+});
 
 ;

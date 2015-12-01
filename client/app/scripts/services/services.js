@@ -45,20 +45,27 @@ angular.module('slamApp')
     
         getProfile: function(callback) {
             var self = this;
+            console.log('1');
             if(!$auth.isAuthenticated()) {
                 if(callback) {
                     self.listen(callback);
                 }
                 return;
             }
+            console.log('2');
             if(self.profile) {
+                console.log('3');
                 if(callback) {
                     callback(self.profile);
+                    return;
                 } else {
+                    console.log('4');
                     return this.profile;
                 }
             }
+            console.log('5');
             if(!self.fetching) {
+                console.log('6');
                 self.fetching = true;
                 return $http.get(api_host+'/api/me').success(function(data){
                     self.fetching = false;
@@ -70,6 +77,7 @@ angular.module('slamApp')
                         self.broadcast();
                         $location.url('/');
                      } else {
+                        console.log('7');
                         self.profile = data.user; 
                         self.profile_id = self.profile.id;
                         $rootScope.account = self.profile;
@@ -140,6 +148,7 @@ angular.module('slamApp')
             });
         },
         broadcast: function() {
+            console.log('8');
             $rootScope.$broadcast("account", this.profile);
         },
         listen: function(callback) {

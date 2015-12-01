@@ -63,7 +63,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 
-                <a class="navbar-brand" ng-href="/">
+                <a class="navbar-brand" ng-href="/#/">
                     <i class="icon-slam-logo04 icono-principal logo-nav"></i>
                 </a>
 
@@ -100,33 +100,33 @@
                             <i class="icon-video"></i>
                         </a>
                     </li>
-                    <li>
+                    <!--li>
                         <a ng-href="/#/registro" data-toggle="tooltip" data-placement="bottom" title="Notificaciones">
                             <i class="icon-notificacion"></i>
                         </a>
-                    </li>
+                    </li-->
 
                     <li ng-if="isAuthenticated()" class="dropdown">
-                        <a class="usr-menu" data-target="#" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown">
+                        <a class="usr-menu" data-target="#" aria-haspopup="true" aria-expanded="false" data-toggle="dropdown" href>
                             {{profile.username}}
                             <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="dLabel">
                             <li>
-                                <a ng-click="goProfile()">Perfil</a>
+                                <a href ng-click="goProfile()">Perfil</a>
                             </li>
                             <li>
-                                <a ng-click="logout()">Cerrar Sesión</a>
+                                <a href ng-click="logout()">Cerrar Sesión</a>
                             </li>
                         </ul>
                         
                     </li>
                     <li ng-if="!isAuthenticated()">
-                        <a class="usr-menu">Ingresar</a>
+                        <a class="usr-menu"  href="/#/home#planilla-registro">Ingresar</a>
                     </li>
 
                     <li>
-                        <a ng-href="/revista" data-toggle="tooltip" data-placement="bottom" title="Revista">
+                        <a ng-href="/#/revista" data-toggle="tooltip" data-placement="bottom" title="Revista">
                             <i class="icon-revista"></i>
                         </a>
                     </li>
@@ -187,7 +187,7 @@
                         <div class="buttons ">
                             <a class="wow fadeInLeft btn eventime_button" href="#about_menu" role="button">
                                 Conocer más </a>
-                            <a class="wow fadeInRight btn eventime_button" href="#planilla-registro" role="button">
+                            <a class="wow fadeInRight btn eventime_button" href="/#/home/#planilla-registro" role="button">
                                 Registrate </a>
                         </div>
                     </div>
@@ -296,14 +296,6 @@
                 
                     <p>Slam Argentino de Poesía Oral</p>
                 
-                    <p>
-                
-                        <a href="http://www.facebook.com/slam.argentino.de.poesia.oral"><i class="fa fa-facebook-square"></i></a>
-
-                        <a href=""><i class="fa fa-youtube-square"></i></a>
-                
-                    </p>
-
                 </div>
 
             </div>

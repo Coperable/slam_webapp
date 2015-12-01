@@ -2387,7 +2387,7 @@ label {
   margin-left: 0;
   color: #37abc8;
 }
-.planilla #torneo-inner {
+.planilla .torneo-inner {
   margin-left: auto;
   margin-right: auto;
   color: #000000;

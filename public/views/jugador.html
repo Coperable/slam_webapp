@@ -1,40 +1,250 @@
-<h1>JUGADOR</h1>
+<div class="gap"></div>
 
-<!-- Nav tabs -->
-	<div>
+<div id="ficha-torneo" class="seccion fondo_gris">
 
-	  	<ul class="nav nav-tabs" role="tablist">
+    <div class="contenedor_sec torneo_info_inside">
 
-		    <li role="presentation" class="active"><a data-target="#tab_info" aria-controls="tab_info" role="tab" data-toggle="tab">Info</a></li>
+	    <div class="titulo wow fadeInDown">
 
-		    <li role="presentation"><a data-target="#tab_jugadores" aria-controls="tab_jugadores" role="tab" data-toggle="tab">Jugadores</a></li>
+	      	<h2 class="sombra_gris_blanco">
+	        	
+	        	<i class="icon-jugador"></i>Jugador
+	      	
+	      	</h2>
+	    
+	    </div>
 
-		    <li role="presentation"><a data-target="#messages" aria-controls="messages" role="tab" data-toggle="tab">Messages</a></li>
+		<div id="jugador-descripcion">
 
-		    <li role="presentation"><a data-target="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+			<div class="row">
+
+				<div class="col-md-4 datos-generales">
+
+					<h1 class="wow fadeInLeft">{{participant.name}} {{participant.lastname}}</h1>
+
+					<div class="wow fadeInLeft avatar">
+
+                        <img ng-src="http://images.collab-dev.com/150x/smart/slam/profiles/{{participant.photo}}">
+
+					</div>
+
+				</div>
+
+				<div class="col-md-4 datos-generales">
+
+					<p> {{participant.about}}</p>
+
+				</div>
+
+				<div class="panel-lateral col-md-4">
+
+					<div class="gap"></div>
+
+					<div class="jug_resumen">
+
+                		<div class="data-box">
+
+		        			<span class="icon-box"><i class="icon-copa"></i></span>
+
+		        			<h4>TORNEOS</h4>
+
+		        			<p>+{{participant.competitions.length}}</p>
+						
+						</div>
+
+						<div class="data-box">
+
+		        			<span class="icon-box"><i class="icon-video"></i></span>
+
+		        			<h4>VIDEOS</h4>
+
+		        			<p>+{{participant.videos.length}}</p>
+						
+						</div>
+
+						<div class="data-box">
+
+		        			<span class="icon-box"><i class="icon-mencion"></i></span>
+
+		        			<h4>MENCIONES</h4>
+
+		        			<p>+2</p>
+						
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
+
+
+
+<div id="torneo_content">
+	
+	<!-- Nav tabs -->
+	<div class="tabs_lookeadas">
+
+	  	<ul class="nav nav-tabs panel_selector" role="tablist">
+
+		    <li role="presentation" class="active"><a data-target="#tab_info" aria-controls="tab_info" role="tab" data-toggle="tab"><i class="fa fa-angle-right"></i>Info</a></li>
+
+		    <li role="presentation"><a data-target="#tab_torneos" aria-controls="tab_torneos" role="tab" data-toggle="tab"><i class="icon-copa"></i>Torneos</a></li>
+
+		    <li role="presentation"><a data-target="#tab_videos" aria-controls="tab_videos" role="tab" data-toggle="tab"><i class="icon-video"></i>Videos</a></li>
+
+		    <li role="presentation"><a data-target="#tab_fotos" aria-controls="tab_fotos" role="tab" data-toggle="tab"><i class="fa fa-camera-retro"></i>Fotos</a></li>
+
+		    <li role="presentation"><a data-target="#tab_comentarios" aria-controls="tab_comentarios" role="tab" data-toggle="tab"><i class="fa fa-comment-o"></i>Comentarios</a></li>
 
 	  	</ul>
 
-	  	<!-- Tab panes -->
-	  	<div class="tab-content">
-	    	
-	    	<div role="tabpanel" class="tab-pane active" id="tab_info" style="color:#000">
-	    	
-	    		<h4>Infooooooooooo</h4>
+  	</div>
 
-	    	</div>
+  	<!-- Tab panes -->
+  	<div class="tab-content contenedor_sec">
+    	
+    	<div role="tabpanel" class="tab-pane fade in active" id="tab_info">
+    	
+    		<div class="info_jugador">
 
-		    <div role="tabpanel" class="tab-pane" id="tab_jugadores" style="color:#000">
+				<h4>
+					<a href=""><i class="fa fa-facebook-square"></i>{{participant.name}} {{participant.lastname}}</a>
+				</h4>
+
+				<h4>
+					<a href=""><i class="fa fa-twitter-square"></i> @{{participant.twitter_username}}</a>
+				</h4>
+
+				<h4>
+					<a href=""><i class="fa fa-instagram"></i> @{{participant.instagram_username}}</a>
+				</h4>
+
+			</div>
+
+			<div class="gap"></div>
+
+    	</div>
+
+	    <div role="tabpanel" class="tab-pane fade" id="tab_torneos">
+
+	    	<div class="">
+
+			    <div id="sec_torneosAnteriores" class="torneo_info_inside">
+
+			    	<div class="row wow fadeInLeftBig">
+
+			    		<div class="col-xs-10 col-sm-5 col-md-4" ng-repeat="competition in participant.competitions">
+
+
+
+
+
+			    			<div class="tarjeta_torneo torneo_info_inside" fecha="{{competition.event_date | moment: 'DD MMM'}}">
+			                    <a href=""><h4 class="torneo_nombre">{{competition.title}}</h4></a>
+			                	<div class="torneo_resumen">
+			                		<div class="data-box">
+					        			<span class="icon-box"><i class="icon-jugador"></i></span>
+					        			<h4>JUGADORES</h4>
+					        			<p>+{{competition.users.length}}</p>
+									</div>
+
+			                		<div class="data-box">
+					        			<span class="icon-box"><i class="icon-video"></i></span>
+					        			<h4>VIDEOS</h4>
+					        			<p>+{{competition.videos.length}}</p>
+									</div>
+
+			                		<div class="data-box" ng-if="competition.images">
+					        			<span class="icon-box"><i class="fa fa-camera"></i></span>
+					        			<h4>FOTOS</h4>
+					        			<p>+12</p>
+									</div>
+
+			                		<div class="data-box" ng-if="competition.posts">
+					        			<span class="icon-box"><i class="fa fa-comment-o"></i></span>
+					        			<h4>COMENTARIOS</h4>
+					        			<p>+{{competition.posts.length}}</p>
+									</div>
+
+			                	</div>
+
+			                	<div class="torneo_datos">
+			                		<div class="torneo_fecha">
+										<span class="icon-box" ><i class="fa fa-clock-o"></i></span>
+										<span class="hora">{{competition.event_date | moment: 'HH:mm'}}</span>
+									</div>
+
+									<div class="torneo_lugar">
+										<span class="icon-box" ><i class="fa fa-map-marker"></i></span>
+										<span class="lugar-nombre">{{competition.place}}</span>
+                                        <span class="direccion">{{competition.location.formatted_address}}</span>
+									</div>
+
+									<div class="torneo_hashtag" ng-if="competition.hashtag">
+										<span class="icon-box">#</span>
+										<span class="aclaracion">{{competition.hashtag}}</span>
+									</div>
+
+			                	</div>
+    			" 
+			                	<div class="ver_mas"><a ng-href="/#/torneo/{{competition.id}}"><h3><i class="fa fa-caret-right"></i>ver más</h3></a></div>
+			            	</div>
+				    	
+				    	</div>
+
+				
+				    </div>
+
+				    <a style="visibility: visible; animation-name: bounceInRight;" class="wow bounceInRight btn eventime_button animated entrada-0s5" href="#about_menu" role="button">CARGAR MÁS..</a>
+				
+				</div>
+
+			</div>
+
+	    </div>
+
+		<div role="tabpanel" class="tab-pane fade" id="tab_videos">
 		    	
-		    	<h4>Jugadoreeeeeeees</h4>
+		    <div class="row">
 
-		    </div>
+	    		<div class="col-xs-11 col-sm-6 col-lg-4" ng-repeat="video in participant.videos">
 
-		    <div role="tabpanel" class="tab-pane" id="messages" style="color:#000">...</div>
+	    			<div class="tarjeta_video">
 
-		    <div role="tabpanel" class="tab-pane" id="settings" style="color:#000">...</div>
+	    				<div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item" ng-src="{{getYoutubeSrc(video)}}" allowfullscreen></iframe>
+						</div>
 
-	  	</div>
+					</div>
 
-	</div>
+				</div>
+
+
+			</div>
+
+	    </div>
+
+	    <div role="tabpanel" class="tab-pane fade" id="tab_fotos">...</div>
+
+	    <div role="tabpanel" class="tab-pane fade" id="tab_comentarios">
+		    <dl>
+                <dt ng-repeat="post in participant.posts">
+                    <a target="_blank" ng-href="http://forum.coperable.org/t/{{post.slug}}/{{post.topic_id}}/{{post.post_number}}">{{post.title}}</a>
+                </dt>
+            </dl>
+        </div>
+
+  	</div>
+
+</div>
+
+
+
 

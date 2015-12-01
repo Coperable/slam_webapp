@@ -8,7 +8,7 @@
  * Controller of the slamApp
  */
 angular.module('slamApp')
-.controller('MainCtrl', function ($scope, $rootScope, $http, $sce, api_host, Region) {
+.controller('MainCtrl', function ($scope, $rootScope, $http, $sce, api_host, Region, Account) {
 	$rootScope.home_page = true;
 
     $scope.summary = {};
@@ -37,6 +37,8 @@ angular.module('slamApp')
 
     $scope.setup_components();
 
+
+
     $rootScope.$on("region_summary", function(event, summary) {
         $scope.summary = summary;
     });
@@ -48,10 +50,10 @@ angular.module('slamApp')
     $scope.participate = function(competition) {
         $http.post(api_host+'/api/competition/'+competition.id+'/participate', {})
         .success(function(data) {
-            console.log(data);
+            $scope.refresh();
         })
         .error(function(error) {
-            console.log(error);
+
         });
     };
 
@@ -59,7 +61,6 @@ angular.module('slamApp')
 })
 .controller('slider-controller', function ($scope, $auth, $timeout, Slider) {
     $scope.sliders = [];
-    console.log('sliders controllers');
     Slider.query(function(sliders) {
         $scope.sliders = sliders;
         $timeout(function() {
@@ -79,6 +80,9 @@ angular.module('slamApp')
         $scope.current_region = region;
     });
     */
+    $scope.refresh = function() {
+        Account.fetchRegionSummary();
+    };
 
     $scope.isAuthenticated = function() {
         return $auth.isAuthenticated();
@@ -86,7 +90,7 @@ angular.module('slamApp')
 
 
 })
-.controller('sessionBar', function ($scope, $rootScope, $http, Region, Account) {
+.controller('sessionBar', function ($scope, $rootScope, $http, $route, $location, Region, Account) {
     $scope.regions = [];
     $scope.region = {};
     $scope.summary = {};
@@ -97,7 +101,6 @@ angular.module('slamApp')
 
     Region.query(function(regions) {
         $scope.regions = regions;
-        console.log('is empty current region ? '+(_.isEmpty($scope.current_region)));
         if(_.isEmpty($scope.current_region)) {
             Account.setCurrentRegion(_.first($scope.regions));
         }
@@ -119,11 +122,15 @@ angular.module('slamApp')
 
     $scope.logout = function() {
         Account.logout();
+        $route.reload();
+        $scope.refresh();
+        window.scrollTo(0, 0);
     };
 
     $scope.goProfile = function() {
-
+        $location.path('/jugador/'+Account.profile.id);
     };
+
 
 })
 .controller('video-list', function ($scope, $rootScope, $http, $sce, api_host, Region, Account) {
@@ -138,7 +145,6 @@ angular.module('slamApp')
     };
 
     $scope.sort = function(field) {
-        console.log(field);
         if(field === 'date') {
             $scope.predicate = 'id';
         }
@@ -156,7 +162,6 @@ angular.module('slamApp')
     $scope.processSummary = function() {
         if($rootScope.region_summary) {
             $scope.summary = $rootScope.region_summary;
-            console.dir($scope.summary);
             $scope.videos = $scope.summary.videos;
         }
 
@@ -176,7 +181,6 @@ angular.module('slamApp')
         $scope.videos = _.filter($scope.summary.videos, function(model) {
             return pattern.test(JSON.stringify(model));
         });
-        console.dir($scope.videos);
     };
 
     $scope.getYoutubeSrc = function(video) {
@@ -239,7 +243,7 @@ angular.module('slamApp')
 
 
 })
-.controller('LoginCtrl', function($scope, $rootScope, $auth, $location, $state, $stateParams, Account) {
+.controller('LoginCtrl', function($scope, $rootScope, $auth, $location, $state, $stateParams, $route, Account) {
 
     $scope.backUrl = $stateParams.backUrl;
 
@@ -248,18 +252,10 @@ angular.module('slamApp')
         .then(function(response) {
             Account.getProfile(function(profile) {
                 $scope.account = profile;
-
-                if(profile) {
-                    //text: 'Ha ingresado a la plataforma', 
-                    if($scope.backUrl) {
-                        $state.go($scope.backUrl);
-                    }
-                }
-
+                $route.reload();
+                $scope.refresh();
+                window.scrollTo(0, 0);
             });
-            if(response.data.select_profile) {
-                $location.path('/select-profile');
-            }
         })
         .catch(function(response) {
             //text: 'Los datos ingresados no son correctos', 
@@ -276,7 +272,7 @@ angular.module('slamApp')
     };
 
 })
-.controller('SignupCtrl', function($scope, $auth, $state, $location, Account) {
+.controller('SignupCtrl', function($scope, $auth, $state, $location, $route, Account) {
 
     $scope.signup = function() {
         $auth.signup({
@@ -286,10 +282,16 @@ angular.module('slamApp')
             language_code: 'ES' //ToDo: Obtener del sitio
         })
         .then(function() {
-            //$state.go('select-profile'); 
-            Account.getProfile(function(profile) {
-                $scope.user_data = profile;
+            $auth.login({ email: $scope.email, password: $scope.password })
+            .then(function(response) {
+                Account.getProfile(function(profile) {
+                    $scope.account = profile;
+                    $route.reload();
+                    $scope.refresh();
+                    window.scrollTo(0, 0);
+                });
             });
+
         })
         .catch(function(response) {
             //text: 'Los datos no son correctos', 
@@ -310,12 +312,6 @@ angular.module('slamApp')
     };
 
 
-})
-.controller('LogoutCtrl', function($auth, $rootScope, Account) {
-    if (!$auth.isAuthenticated()) {
-        return;
-    }
-    Account.logout();
 })
 .controller('jugador-view', function ($scope, $rootScope, $routeParams, $http, $sce, api_host, Participant) {
 	$rootScope.home_page = false;
@@ -339,6 +335,9 @@ angular.module('slamApp')
 })
 .controller('revista-view', function ($scope, $rootScope) {
 	$rootScope.home_page = false;
+    jQuery("#preloader").fadeOut("fast",function(){
+        jQuery(this).remove()
+    });
 
 })
 .controller('torneo-view', function ($scope, $rootScope, $routeParams, $http, $sce, api_host, Competition) {
@@ -362,7 +361,7 @@ angular.module('slamApp')
     $scope.participate = function(competition) {
         $http.post(api_host+'/api/competition/'+competition.id+'/participate', {})
         .success(function(data) {
-            console.log(data);
+            $scope.refresh();
         })
         .error(function(error) {
             console.log(error);

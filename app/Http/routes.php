@@ -19,6 +19,7 @@ Route::post('api/users/assign/roles',  ['middleware' => 'auth', 'uses' => 'UserC
 Route::post('api/users/assign/regions',  ['middleware' => 'auth', 'uses' => 'UserController@assignRegions']);
 
 Route::resource('api/users', 'UserController');
+
 Route::resource('api/participants', 'ParticipantController');
 Route::resource('api/competitions', 'CompetitionController');
 Route::resource('api/regions', 'RegionController');

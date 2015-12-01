@@ -32,13 +32,13 @@
     			
     			<img ng-src="http://images.collab-dev.com/190x/smart/slam/{{summary.next_competition.cover_photo}}">
 
-    			<div class="ver_mas izq"><a href=""><h3><i class="fa fa-caret-right"></i>ver más</h3></a></div>
+    			<div class="ver_mas izq"><a ng-href="/#/torneo/{{summary.next_competition.id}}"><h3><i class="fa fa-caret-right"></i>ver más</h3></a></div>
 
     		</div>
 
     		<div class="col-xs-12 col-sm-6 col-md-3">
 
-    			<a href="">
+    			<a ng-href="/#/torneo/{{summary.next_competition.id}}">
 
     				<h4 class="torneo_nombre">{{summary.next_competition.title}}</h4>
 
@@ -75,7 +75,9 @@
 				
 				</div>
 
-				<a style="visibility: visible; animation-name: bounceInRight;" class="wow bounceInRight btn btn_principal animated entrada-1s animated" href role="button" ng-click="participate(summary.next_competition)">PARTICIPAR</a>
+				<h3 ng-if="summary.next_competition.already_participating" class="wow bounceInRight animated entrada-1s animated text-center"><b>ESTÁS PARTICIPANDO!</b></h3>
+				<a ng-if="!summary.next_competition.already_participating" ng-show="isAuthenticated()" style="animation-name: bounceInRight;" class="wow bounceInRight btn btn_principal animated entrada-1s animated" href role="button" ng-click="participate(summary.next_competition)">PARTICIPAR</a>
+				<a ng-show="!isAuthenticated()" style="animation-name: bounceInRight;" class="wow bounceInRight btn btn_principal animated entrada-1s animated"  href="#/#planilla-registro" role="button">PARTICIPAR</a>
 
 				<div class="mini_gap"></div>
 
@@ -217,7 +219,7 @@
 
 	    <div class="mini_gap"></div>
 
-	    <a style="visibility: visible; animation-name: fadeInLeft;" class="wow fadeInLeft btn eventime_button animated" href="#about_menu" role="button">VER TODOS</a>
+	    <a style="visibility: visible; animation-name: fadeInLeft;" class="wow fadeInLeft btn eventime_button animated" href="/#/torneos" role="button">VER TODOS</a>
 
 	    <div class="mini_gap"></div>
 	
@@ -521,112 +523,96 @@
 
 
 <!-- SEC: REGISTRO -->
-<div id="planilla-registro" class="seccion planilla" ng-show="!isAuthenticated()">
+<div id="planilla-registro" class="seccion planilla row" ng-show="!isAuthenticated()">
     <div class="contenedor_sec">
-	 	<div class="titulo wow fadeInLeftBig">
-	      	<h2 class="sombra_blanco_gris">
-	        	<i class="fa fa-user-plus"></i>REGISTRATE
-	      	</h2>
 
-	      	<p>¿Querés participar?</p>
-	      	<p><small>REGISTRATE PARA CREAR TU PERFIL DE JUGADOR Y PARTICIPAR DE LOS TORNEOS.</small></p>
-	    </div>
+        <div class="col-lg-5 col-md-6" data-ng-controller="LoginCtrl">
+            <div class="titulo wow bounceInRight">
+                <h2 class="sombra_blanco_gris">
+                    <i class="fa fa-user"></i>INGRESA
+                </h2>
+                <p></p>
+                <p></p>
+            </div>
+            <div class="torneo-inner">
+                <a href class="contact_icon fa fa-facebook wow fadeInUp"  ng-click="authenticate('facebook')"> </a>
+                <a href class="contact_icon fa fa-twitter wow fadeInUp" ng-click="authenticate('twitter')"> </a>
+                <a href class="contact_icon fa fa-google-plus wow fadeInUp" ng-click="authenticate('google')"> </a>
+                <form method="post" ng-submit="login()" name="loginForm">
+                    <div class="form-group">
+                        <label for="email">email:</label>
+                        <input type="email" class="form-control" id="email" ng-model="email" placeholder="EMAIL">
+                    </div>
+                    <div class="form-group">
+                        <label for="contrasenia">Contraseña:</label>
+                        <input type="password" class="form-control" id="contrasenia" ng-model="password" placeholder="***">
+                    </div>
 
-		<div id="torneo-inner">
+                    <div class="mini_gap"></div>
 
-            <div class="row wow fadeInRightBig">
-                <div class="col-lg-5 col-md-6" data-ng-controller="SignupCtrl">
-                    <form method="post" ng-submit="signup()" name="signupForm">
-					  	<div class="form-group">
-					    	<label for="nombre">Nombre Usuario:</label>
-					 		<input type="text" class="form-control" ng-model="username" id="nombre" placeholder="APODO">
-					  	</div>
+                    <button type="submit" ng-disabled="loginForm.$invalid" class="wow bounceInLeft btn btn_principal btn-primary animated entrada-1s">INGRESAR</button>
 
-					  	<div class="form-group">
-					    	<label for="email">email:</label>
-					 		<input type="email" class="form-control" ng-model="email" id="email" placeholder="EMAIL">
-					  	</div>
-
-					  	<div class="form-group">
-					    	<label for="contrasenia">Contraseña:</label>
-					 		<input type="password" class="form-control" ng-model="password" id="contrasenia" placeholder="***">
-					  	</div>
-
-					  	<div class="form-group">
-					    	<label for="contraseniaConf">Confirmar contraseña:</label>
-					 		<input type="password" class="form-control" ng-model="confirmPassword" id="contraseniaConf" placeholder="***">
-					  	</div>
-
-					  	<div class="form-group">
-					    	<label for="apellido">Nombre:</label>
-					 		<input type="text" class="form-control" ng-model="name" id="apellido" placeholder="APELLIDO">
-					  	</div>
-
-					  	<div class="form-group">
-					    	<label for="apellido">Apellido:</label>
-					 		<input type="text" class="form-control" ng-model="lastname" id="nombre" placeholder="NOMBRE">
-					  	</div>
-
-					  	<div class="checkbox wow fadeInLeft entrada-1s">
-						    <label>
-						    	<input type="checkbox"> <span>Acepto los <a href="">Términos y condiciones</a> del servicio.</span>
-						    </label>
-						</div>
-
-						<div class="mini_gap"></div>
-                        <button type="submit" ng-disabled="signupForm.$invalid" class="wow bounceInRight btn btn_principal btn-primary animated entrada-1s btn-large">REGISTRARME</button>
-
-                    </form>
-                </div>
-
-                <div class="col-lg-5 col-md-6" data-ng-controller="LoginCtrl">
-
-                    <a href class="contact_icon fa fa-facebook wow fadeInUp"  ng-click="authenticate('facebook')">
-                    </a>
-                    <a href class="contact_icon fa fa-twitter wow fadeInUp" ng-click="authenticate('twitter')">
-                    </a>
-                    <a href class="contact_icon fa fa-google-plus wow fadeInUp" ng-click="authenticate('google')">
-                    </a>
-
-                    <form method="post" ng-submit="login()" name="loginForm">
+                </form>
+            </div>
+        </div>
 
 
-					  	<div class="form-group">
 
-					    	<label for="email">email:</label>
 
-					 		<input type="email" class="form-control" id="email" ng-model="email" placeholder="EMAIL">
-
-					  	</div>
-
-					  	<div class="form-group">
-
-					    	<label for="contrasenia">Contraseña:</label>
-
-					 		<input type="password" class="form-control" id="contrasenia" ng-model="password" placeholder="***">
-
-					  	</div>
-
-						<div class="mini_gap"></div>
-
-						<!--a style="visibility: visible; animation-name: bounceInRight;" class="wow bounceInRight btn btn_principal animated entrada-1s animated block-center" role="button">INGRESAR</a-->
-                        <button type="submit" ng-disabled="loginForm.$invalid" class="wow bounceInRight btn btn_principal btn-primary animated entrada-1s">INGRESAR</button>
-
-                    </form>
-
-                </div>
-
+        <div class="col-lg-5 col-md-6" data-ng-controller="SignupCtrl">
+            <div class="titulo wow fadeInLeftBig">
+                <h2 class="sombra_blanco_gris">
+                    <i class="fa fa-user-plus"></i>REGISTRATE
+                </h2>
+                <p>¿Querés participar?</p>
+                <p><small>REGISTRATE PARA CREAR TU PERFIL DE JUGADOR Y PARTICIPAR DE LOS TORNEOS.</small></p>
             </div>
 
-		</div>
-
+            <div class="torneo-inner">
+                <div class="row wow fadeInRightBig">
+                    <form method="post" ng-submit="signup()" name="signupForm">
+                        <div class="form-group">
+                            <label for="nombre">Nombre Usuario:</label>
+                            <input type="text" class="form-control" ng-model="username" id="nombre" placeholder="APODO">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">email:</label>
+                            <input type="email" class="form-control" ng-model="email" id="email" placeholder="EMAIL">
+                        </div>
+                        <div class="form-group">
+                            <label for="contrasenia">Contraseña:</label>
+                            <input type="password" class="form-control" ng-model="password" id="contrasenia" placeholder="***">
+                        </div>
+                        <div class="form-group">
+                            <label for="contraseniaConf">Confirmar contraseña:</label>
+                            <input type="password" class="form-control" ng-model="confirmPassword" id="contraseniaConf" placeholder="***">
+                        </div>
+                        <div class="form-group">
+                            <label for="apellido">Nombre:</label>
+                            <input type="text" class="form-control" ng-model="name" id="apellido" placeholder="APELLIDO">
+                        </div>
+                        <div class="form-group">
+                            <label for="apellido">Apellido:</label>
+                            <input type="text" class="form-control" ng-model="lastname" id="nombre" placeholder="NOMBRE">
+                        </div>
+                        <div class="checkbox wow fadeInLeft entrada-1s">
+                            <label>
+                                <input type="checkbox"> <span>Acepto los <a href="">Términos y condiciones</a> del servicio.</span>
+                            </label>
+                        </div>
+                        <div class="mini_gap"></div>
+                        <button type="submit" ng-disabled="signupForm.$invalid" class="wow bounceInRight btn btn_principal btn-primary animated entrada-1s btn-large">REGISTRARME</button>
+                    </form>
+                </div>
+            </div>
+        </div>
 	</div>
 
 </div>
 
 
 <!-- SEC: INFORMACIÓN -->
-<div id="info01" class="info_seccion wow slideInRight">
+<div id="info01" class="info_seccion wow slideInRight" ng-if="current_region.id == 1">
 
 	<div class="info_contenedor wow bounceInRight entrada-0s5">
 
@@ -642,20 +628,6 @@
 
 	</div>
 
-    <!--<div class="first_line"></div>
-
-    <div class="titulo">
-        <p>
-           Información !!
-        </p>
-    </div>
-    
-    <div class="first_description">
-        <p>
-           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer varius lectus ut dui cursus luctus. Nam aliquam, odio vitae imperdiet porta, quam sem interdum sem, vel dignissim arcu orci in nisl.
-        </p>
-    </div>-->
-    
     <div class="mini_gap"></div>
 
 </div>

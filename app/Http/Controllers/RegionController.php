@@ -5,6 +5,7 @@ use Config;
 use Carbon;
 use Log;
 use DB;
+use JWT;
 use Illuminate\Support\Collection;
 use Slam\User;
 use Slam\Model\Region;
@@ -27,8 +28,21 @@ class RegionController extends Controller {
         return $region;
 	}
 
-	public function summary($regionId) {
+	public function summary(Request $request, $regionId) {
         $region = Region::find($regionId);
+
+        $user = false;
+        $token = $request->header('Authorization');
+		if ( $token )  {
+            if(isset($token[1])) {
+                $token = explode(' ', $request->header('Authorization'))[1];
+                $payload = (array) JWT::decode($token, Config::get('app.token_secret'), array('HS256'));
+                $user = User::find($payload['sub']);
+            }
+        }
+
+
+
         
         $participants = new Collection();
         $past_competitions = new Collection();
@@ -44,8 +58,11 @@ class RegionController extends Controller {
             $competitions = $region->competitions;
             $videos = DB::table('medias')->where('region_id', '=', $region->id)->get();
         }
-        $competitions->each(function($competition) use ($past_competitions, $next_competitions, $participants)  {
-            $competition->users->each(function($participant) use ($participants) {
+        $competitions->each(function($competition) use ($past_competitions, $next_competitions, $participants, $user)  {
+            $competition->users->each(function($participant) use ($participants, $competition, $user) {
+                if($user && $user->id == $participant->id) {
+                    $competition->already_participating = true;
+                }
                 $participant->medias;
                 $participant->competitions;
                 $participants->push($participant);
@@ -61,7 +78,6 @@ class RegionController extends Controller {
             }
         });
 
-        Log::info($participants);
 
 
         $region->next_competition = $next_competitions->first();

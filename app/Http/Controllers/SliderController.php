@@ -35,9 +35,11 @@ class SliderController extends Controller {
             $slider->subtitle = $request->input('subtitle');
             $slider->quote_author = $request->input('quote_author');
 
-            $arr = explode(".", $request->input('event_date'), 2);
-            $event_date = str_replace("T", " ", $arr[0]);
-            $slider->event_date = Carbon::createFromFormat('Y-m-d H:i:s', $event_date);
+            if($request->has('event_date')) {
+                $arr = explode(".", $request->input('event_date'), 2);
+                $event_date = str_replace("T", " ", $arr[0]);
+                $slider->event_date = Carbon::createFromFormat('Y-m-d H:i:s', $event_date);
+            }
 
             $slider->event_place = $request->input('event_place');
             $slider->cover_photo = $request->input('cover_photo');
@@ -59,10 +61,11 @@ class SliderController extends Controller {
             $slider->title = $request->input('title');
             $slider->subtitle = $request->input('subtitle');
             $slider->quote_author = $request->input('quote_author');
-            $arr = explode(".", $request->input('event_date'), 2);
-            $event_date = str_replace("T", " ", $arr[0]);
-            $slider->event_date = Carbon::createFromFormat('Y-m-d H:i:s', $event_date);
-
+            if($request->has('event_date')) {
+                $arr = explode(".", $request->input('event_date'), 2);
+                $event_date = str_replace("T", " ", $arr[0]);
+                $slider->event_date = Carbon::createFromFormat('Y-m-d H:i:s', $event_date);
+            }
             $slider->event_place = $request->input('event_place');
             $slider->cover_photo = $request->input('cover_photo');
             $slider->signup_action = $request->input('signup_action') || false;

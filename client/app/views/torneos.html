@@ -1,14 +1,14 @@
 <div class="gap"></div>
 <div id="sec_torneoPrincipal" class="seccion fondo_claro"  ng-if="summary.next_competition">
     <div class="contenedor_sec torneo_principal torneo_info_inside">
-	    <div class="titulo wow fadeInDown">
+	    <div class="titulo">
 	      	<h2 class="en_color_principal sombra_blanco_gris">
 	        	<i class="icon-copa"></i>Próximos Torneos
 	        	<small class="label_region">en {{summary.name}}</small>
 	      	</h2>
 	    </div>
 
-    	<div class="row wow fadeInLeftBig">
+    	<div class="row">
     		<div class="col-sm-12 col-md-5">
     			<img ng-src="http://images.collab-dev.com/190x/smart/slam/{{summary.next_competition.cover_photo}}">
     			<div class="ver_mas izq"><a ng-href="/#/torneo/{{summary.next_competition.id}}"><h3><i class="fa fa-caret-right"></i>ver más</h3></a></div>
@@ -39,7 +39,7 @@
         			<p><small>+{{summary.next_competition.users.length || 0}}</small>+{{summary.next_competition.users_amount - summary.next_competition.users.length}}</p>
 				</div>
 
-				<a style="visibility: visible; animation-name: bounceInRight;" class="wow bounceInRight btn btn_principal animated entrada-1s animated" href role="button" ng-click="participate(summary.next_competition)">PARTICIPAR</a>
+				<a style="visibility: visible; animation-name: bounceInRight;" class="btn btn_principal animated entrada-1s animated" href role="button" ng-click="participate(summary.next_competition)">PARTICIPAR</a>
 				<div class="mini_gap"></div>
 
     		</div>
@@ -52,10 +52,10 @@
     	</div>    	
 
     </div>
-    <div class="row wow fadeInLeftBig">
+    <div class="row ">
 
 
-        <div class="col-xs-10 col-sm-5 col-md-4" ng-repeat="next in summary.next_competitions">
+        <div class="col-xs-10 col-sm-5 col-md-4" ng-repeat="next in summary.next_competitions" ng-if="next.id != summary.next_competition.id">
             <a ng-href="/#/torneo/{{next.id}}" class="no_opacity_hover">
             <div class="tarjeta_torneo torneo_info_inside" fecha="{{next.event_date | moment: 'DD MMM'}}">
                 <h4 class="torneo_nombre">{{next.title}}</h4>
@@ -115,14 +115,14 @@
 <!-- SEC: TORNEOS ANTERIORES -->
 <div id="sec_torneosAnteriores" class="seccion fondo_gris">
     <div class="contenedor_sec torneo_info_inside">
-	    <div class="titulo wow fadeInDown">
+	    <div class="titulo ">
 	      	<h2 class="sombra_gris_blanco">
 	        	<i class="icon-copa"></i>Torneos Anteriores
 	        	<small class="label_region">en {{summary.name}}</small>
 	      	</h2>
 	    </div>
 
-	    <div class="form-group wow fadeInLeft">
+	    <div class="form-group ">
 	    	<a class="btn eventime_button btn_filtro" href="#about_menu" role="button"><i class="fa fa-sort-alpha-asc"></i></a>
 	    	<a class="btn eventime_button btn_filtro" href="#about_menu" role="button"><i class="fa fa-sort-alpha-desc"></i></a>
 	    	<a class="btn eventime_button btn_filtro" href="#about_menu" role="button"><i class="fa fa-clock-o"></i> Recientes</a>
