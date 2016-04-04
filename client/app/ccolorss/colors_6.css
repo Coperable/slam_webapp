@@ -6,11 +6,76 @@ Version:    1.2
 Last change:    3 apr 2015
 Assigned to:    http://themeforest.net/user/chaykovskiy
 Primary use:    Eventime HTML Template 
--------------------------------------------------------------------*/
+-------------------------------------------------------------------
+
+ Main color of template #6153ff 
+
+    > ADICIONAL
+
+ ------------------------------------------------------------------- */
+
+
+a, a:hover, a.contact_icon, .navbar a:hover {
+
+    color: #6153ff; 
+}
+
+a.btn_principal {
+
+    background-color: #6153ff;
+}
+
+.fondo_gris .eventime_button {
+
+        color: #6153ff; 
+}
+
+.label_region {
+
+    color: #6153ff;
+}
+
+.tarjeta_torneo::after {
+
+    background: #6153ff;
+}
+
+.selector_region a#dLabel {
+
+    color: #6153ff;
+}
+
+.color_principal {
+
+    color: #6153ff;
+}
+
+.input-group-addon {
+
+    background-color: #6153ff;
+
+    border: 0px solid #6153ff;
+}
+
+.tooltip.bottom .tooltip-arrow {
+
+    border-bottom-color: #6153ff;
+}
+
+.tooltip-inner {
+
+    color: #6153ff;
+
+    border: solid 1px #6153ff;
+
+}
 
 
 
-/*!------------------------------ Main color of template #1ffcff ------------------------------*/
+
+
+// -----------------------------------------------------
+
 
 .navbar-nav>.active>a,
 
@@ -51,7 +116,7 @@ a.navbar-brand:hover,
 
 .copyright span{
 
-    color: #1ffcff;
+    color: #6153ff;
 
 }
 
@@ -62,7 +127,7 @@ a.navbar-brand:hover,
 
 .contact_icon:hover  {
    
-    background: #1ffcff;
+    background: #6153ff;
 
 }
 
@@ -96,7 +161,7 @@ figure.eventime_img figcaption::before,
 
 .center_line {
 
-    border-color: #1ffcff;
+    border-color: #6153ff;
 
 }
 
@@ -108,23 +173,22 @@ footer,
 
 .navbar-toggle{
 
-    background: #1ffcff;
+    background: #6153ff;
   
-    background: -moz-linear-gradient(-45deg,  #1ffcff 0%, #55f0b7 100%);
+    background: -moz-linear-gradient(-45deg,  #6153ff 0%, #e55e74 100%);
    
-    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#1ffcff), color-stop(100%,#55f0b7));
+    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#6153ff), color-stop(100%,#e55e74));
   
-    background: -webkit-linear-gradient(-45deg,  #1ffcff 0%,#55f0b7 100%);
+    background: -webkit-linear-gradient(-45deg,  #6153ff 0%,#e55e74 100%);
    
-    background: -o-linear-gradient(-45deg,  #1ffcff 0%,#55f0b7 100%);
+    background: -o-linear-gradient(-45deg,  #6153ff 0%,#e55e74 100%);
+   
+    background: -ms-linear-gradient(-45deg,  #6153ff 0%,#e55e74 100%);
+   
+    background: linear-gradient(135deg,  #6153ff 0%,#e55e74 100%);
+   
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#6153ff', endColorstr='#e55e74',GradientType=1 );
   
-    background: -ms-linear-gradient(-45deg,  #1ffcff 0%,#55f0b7 100%);
-  
-    background: linear-gradient(135deg,  #1ffcff 0%,#55f0b7 100%);
-  
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1ffcff', endColorstr='#55f0b7',GradientType=1 );
-
-
 }
 
 
@@ -146,7 +210,7 @@ footer,
 
 #home_slider .right_arrow {
 
-    fill: #1ffcff;
+    fill: #6153ff;
 
 }
 
@@ -238,12 +302,6 @@ footer,
 
 /*!------------------------------ Black color #000 ------------------------------*/
 
-
-
-
-a,
-
-a:hover,
 
 .first_title,
 
@@ -414,18 +472,3 @@ footer .first_line,
     background-image: url('../images/bg_contact.jpg');
 
 }
-
-/*---------------------- Additional Styles ---------------------*/
-
-
-.sponsor_featured, 
-
-.sponsor_basic {
-
-    outline: none !important;
-
-    border: 3px solid #000 !important;
-
-    background: transparent !important;
-
-} 

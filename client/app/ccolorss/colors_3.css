@@ -6,11 +6,76 @@ Version:    1.2
 Last change:    3 apr 2015
 Assigned to:    http://themeforest.net/user/chaykovskiy
 Primary use:    Eventime HTML Template 
--------------------------------------------------------------------*/
+-------------------------------------------------------------------
+
+ Main color of template #a9ce0c 
+
+    > SANTA FE
+
+ ------------------------------------------------------------------- */
+
+
+a, a:hover, a.contact_icon, .navbar a:hover {
+
+    color: #a9ce0c; 
+}
+
+a.btn_principal {
+
+    background-color: #a9ce0c;
+}
+
+.fondo_gris .eventime_button {
+
+        color: #a9ce0c; 
+}
+
+.label_region {
+
+    color: #a9ce0c;
+}
+
+.tarjeta_torneo::after {
+
+    background: #a9ce0c;
+}
+
+.selector_region a#dLabel {
+
+    color: #a9ce0c;
+}
+
+.color_principal {
+
+    color: #a9ce0c;
+}
+
+.input-group-addon {
+
+    background-color: #a9ce0c;
+
+    border: 0px solid #a9ce0c;
+}
+
+.tooltip.bottom .tooltip-arrow {
+
+    border-bottom-color: #a9ce0c;
+}
+
+.tooltip-inner {
+
+    color: #a9ce0c;
+
+    border: solid 1px #a9ce0c;
+
+}
 
 
 
-/*!------------------------------ Main color of template #21ff84 ------------------------------*/
+
+
+// -----------------------------------------------------
+
 
 .navbar-nav>.active>a,
 
@@ -51,7 +116,7 @@ a.navbar-brand:hover,
 
 .copyright span{
 
-    color: #21ff84;
+    color: #a9ce0c;
 
 }
 
@@ -62,7 +127,7 @@ a.navbar-brand:hover,
 
 .contact_icon:hover  {
    
-    background: #21ff84;
+    background: #a9ce0c;
 
 }
 
@@ -96,7 +161,7 @@ figure.eventime_img figcaption::before,
 
 .center_line {
 
-    border-color: #21ff84;
+    border-color: #a9ce0c;
 
 }
 
@@ -108,22 +173,22 @@ footer,
 
 .navbar-toggle{
 
-    background: #21ff84; /* Old browsers */
-    
-    background: -moz-linear-gradient(-45deg,  #21ff84 0%, #20fcdb 100%); /* FF3.6+ */
-    
-    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#21ff84), color-stop(100%,#20fcdb)); /* Chrome,Safari4+ */
-    
-    background: -webkit-linear-gradient(-45deg,  #21ff84 0%,#20fcdb 100%); /* Chrome10+,Safari5.1+ */
-    
-    background: -o-linear-gradient(-45deg,  #21ff84 0%,#20fcdb 100%); /* Opera 11.10+ */
-    
-    background: -ms-linear-gradient(-45deg,  #21ff84 0%,#20fcdb 100%); /* IE10+ */
-    
-    background: linear-gradient(135deg,  #21ff84 0%,#20fcdb 100%); /* W3C */
-    
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#21ff84', endColorstr='#20fcdb',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-
+    background: #a9ce0c;
+  
+    background: -moz-linear-gradient(-45deg,  #a9ce0c 0%, #e55e74 100%);
+   
+    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#a9ce0c), color-stop(100%,#e55e74));
+  
+    background: -webkit-linear-gradient(-45deg,  #a9ce0c 0%,#e55e74 100%);
+   
+    background: -o-linear-gradient(-45deg,  #a9ce0c 0%,#e55e74 100%);
+   
+    background: -ms-linear-gradient(-45deg,  #a9ce0c 0%,#e55e74 100%);
+   
+    background: linear-gradient(135deg,  #a9ce0c 0%,#e55e74 100%);
+   
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a9ce0c', endColorstr='#e55e74',GradientType=1 );
+  
 }
 
 
@@ -145,7 +210,7 @@ footer,
 
 #home_slider .right_arrow {
 
-    fill: #21ff84;
+    fill: #a9ce0c;
 
 }
 
@@ -237,12 +302,6 @@ footer,
 
 /*!------------------------------ Black color #000 ------------------------------*/
 
-
-
-
-a,
-
-a:hover,
 
 .first_title,
 

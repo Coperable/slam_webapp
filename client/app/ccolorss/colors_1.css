@@ -10,7 +10,72 @@ Primary use:    Eventime HTML Template
 
 
 
-/*!------------------------------ Main color of template #ff4949 ------------------------------*/
+
+
+/*!------------------------------ Main color of template #37abc8 ------------------------------*/
+
+
+a, a:hover, a.contact_icon, .navbar a:hover {
+
+    color: #37abc8; 
+}
+
+a.btn_principal {
+
+    background-color: #37abc8;
+}
+
+.fondo_gris .eventime_button {
+
+        color: #37abc8; 
+}
+
+.label_region {
+
+    color: #37abc8;
+}
+
+.tarjeta_torneo::after {
+
+    background: #37abc8;
+}
+
+.selector_region a#dLabel {
+
+    color: #37abc8;
+}
+
+.color_principal {
+
+    color: #37abc8;
+}
+
+.input-group-addon {
+
+    background-color: #37abc8;
+
+    border: 0px solid #37abc8;
+}
+
+.tooltip.bottom .tooltip-arrow {
+
+    border-bottom-color: #37abc8;
+}
+
+.tooltip-inner {
+
+    color: #37abc8;
+
+    border: solid 1px #37abc8;
+
+}
+
+
+
+
+
+// -----------------------------------------------------
+
 
 .navbar-nav>.active>a,
 
@@ -51,7 +116,7 @@ a.navbar-brand:hover,
 
 .copyright span{
 
-    color: #ff4949;
+    color: #37abc8;
 
 }
 
@@ -62,7 +127,7 @@ a.navbar-brand:hover,
 
 .contact_icon:hover  {
    
-    background: #ff4949;
+    background: #37abc8;
 
 }
 
@@ -96,7 +161,7 @@ figure.eventime_img figcaption::before,
 
 .center_line {
 
-    border-color: #ff4949;
+    border-color: #37abc8;
 
 }
 
@@ -108,21 +173,21 @@ footer,
 
 .navbar-toggle{
 
-    background: #ff4949;
+    background: #37abc8;
   
-    background: -moz-linear-gradient(-45deg,  #ff4949 0%, #e55e74 100%);
+    background: -moz-linear-gradient(-45deg,  #37abc8 0%, #e55e74 100%);
    
-    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#ff4949), color-stop(100%,#e55e74));
+    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#37abc8), color-stop(100%,#e55e74));
   
-    background: -webkit-linear-gradient(-45deg,  #ff4949 0%,#e55e74 100%);
+    background: -webkit-linear-gradient(-45deg,  #37abc8 0%,#e55e74 100%);
    
-    background: -o-linear-gradient(-45deg,  #ff4949 0%,#e55e74 100%);
+    background: -o-linear-gradient(-45deg,  #37abc8 0%,#e55e74 100%);
    
-    background: -ms-linear-gradient(-45deg,  #ff4949 0%,#e55e74 100%);
+    background: -ms-linear-gradient(-45deg,  #37abc8 0%,#e55e74 100%);
    
-    background: linear-gradient(135deg,  #ff4949 0%,#e55e74 100%);
+    background: linear-gradient(135deg,  #37abc8 0%,#e55e74 100%);
    
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff4949', endColorstr='#e55e74',GradientType=1 );
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#37abc8', endColorstr='#e55e74',GradientType=1 );
   
 }
 
@@ -145,7 +210,7 @@ footer,
 
 #home_slider .right_arrow {
 
-    fill: #ff4949;
+    fill: #37abc8;
 
 }
 
@@ -237,12 +302,6 @@ footer,
 
 /*!------------------------------ Black color #000 ------------------------------*/
 
-
-
-
-a,
-
-a:hover,
 
 .first_title,
 

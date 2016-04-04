@@ -2,11 +2,11 @@
 <!-- SEC: TORNEO PRINCIPAL -->
 <div id="sec_torneoPrincipal" class="seccion"  ng-if="summary.next_competition">
 
-    <div class="contenedor_sec torneo_principal torneo_info_inside">
+    <div class="contenedor_sec torneo_principal torneo_display">
 
 	    <div class="titulo wow fadeInDown">
 
-	      	<h2 class="en_color_principal sombra_blanco_gris">
+	      	<h2 class="sombra_blanco_gris">
 	        	
 	        	<i class="icon-copa"></i>Próximo Torneo
 
@@ -18,9 +18,9 @@
 
 	    <div class="ver_mas wow bounceInRight entrada-1s">
 
-	    	<a ng-href="/#/torneos">
+	    	<a class="link_magico" ng-href="/#/torneos">
 
-	    		<h3><i class="fa fa-caret-right"></i>ver todos los torneos</h3>
+	    		<i class="fa fa-caret-right"></i>ver todos los torneos
 	    	
 	    	</a>
 	    	
@@ -30,9 +30,13 @@
 
     		<div class="col-sm-12 col-md-5">
     			
-    			<img ng-src="http://images.collab-dev.com/190x/smart/slam/{{summary.next_competition.cover_photo}}">
+    			<a ng-href="/#/torneo/{{summary.next_competition.id}}"><img ng-src="http://images.collab-dev.com/190x/smart/slam/{{summary.next_competition.cover_photo}}"></a>
 
-    			<div class="ver_mas izq"><a ng-href="/#/torneo/{{summary.next_competition.id}}"><h3><i class="fa fa-caret-right"></i>ver más</h3></a></div>
+    			<div class="mini_gap"></div>
+
+    			<div class="ver_mas izq"><a class="link_magico" ng-href="/#/torneo/{{summary.next_competition.id}}"><i class="fa fa-caret-right"></i>ver más</a></div>
+
+    			<div class="mini_gap"></div>
 
     		</div>
 
@@ -40,7 +44,7 @@
 
     			<a ng-href="/#/torneo/{{summary.next_competition.id}}">
 
-    				<h4 class="torneo_nombre">{{summary.next_competition.title}}</h4>
+    				<span class="torneo_nombre">{{summary.next_competition.title}}</span>
 
     			</a>
 
@@ -76,7 +80,7 @@
 				</div>
 
 				<h3 ng-if="summary.next_competition.already_participating" class="wow bounceInRight animated entrada-1s animated text-center"><b>ESTÁS PARTICIPANDO!</b></h3>
-				<a ng-if="!summary.next_competition.already_participating" ng-show="isAuthenticated()" style="animation-name: bounceInRight;" class="wow bounceInRight btn btn_principal animated entrada-1s animated" href role="button" ng-click="participate(summary.next_competition)">PARTICIPAR</a>
+				<a ng-if="!summary.next_competition.already_participating" ng-show="isAuthenticated()" style="animation-name: bounceInRight;" class="wow bounceInRight btn btn_principal animated entrada-1s animated sombra_blanco_gris" href role="button" ng-click="participate(summary.next_competition)">PARTICIPAR</a>
 				<a ng-show="!isAuthenticated()" style="animation-name: bounceInRight;" class="wow bounceInRight btn btn_principal animated entrada-1s animated"  href="#/#planilla-registro" role="button">PARTICIPAR</a>
 
 				<div class="mini_gap"></div>
@@ -98,7 +102,7 @@
 <!-- SEC: TORNEOS ANTERIORES -->
 <div id="sec_torneosAnteriores" class="seccion fondo_gris">
 
-    <div class="contenedor_sec torneo_info_inside wow fadeInLeftBig">
+    <div class="contenedor_sec torneo_display wow fadeInLeftBig">
 
 	    <div class="titulo wow fadeInDown">
 
@@ -114,9 +118,9 @@
 
 	    <div class="ver_mas wow bounceInRight entrada-1s">
 
-	    	<a href="/#/torneos">
+	    	<a class="link_magico" href="/#/torneos">
 
-	    		<h3><i class="fa fa-caret-right"></i>ver todos los torneos</h3>
+	    		<i class="fa fa-caret-right"></i>ver todos los torneos
 	    	
 	    	</a>
 	    	
@@ -124,13 +128,15 @@
 
     	<div class="row">
 
-    		<div class="col-xs-10 col-sm-5 col-md-4" ng-repeat="past in summary.past_competitions">
+    		<div class="col-xs-11 col-sm-6 col-lg-4" ng-repeat="past in summary.past_competitions">
 
-    			<a ng-href="/#/torneo/{{past.id}}" class="no_opacity_hover">
-
-    			<div class="tarjeta_torneo torneo_info_inside" fecha="{{past.event_date | moment: 'DD MMM'}}">
+    			<div class="tarjeta_torneo torneo_display" fecha="{{past.event_date | moment: 'DD MMM'}}">
                  	
-                    <h4 class="torneo_nombre">{{past.title}}</h4>
+                    <div class="t_nombre_container">
+
+                    	<a ng-href="/#/torneo/{{past.id}}" class="no_opacity_hover"><span class="torneo_nombre">{{past.title}}</span></a>
+                    
+                    </div>
 
                 	<div class="torneo_resumen">
 
@@ -206,11 +212,9 @@
 
                 	</div>
 
-                	<div class="ver_mas"><h3><i class="fa fa-caret-right"></i>ver más</h3></div>
+                	<!-- div class="ver_mas"><h3><i class="fa fa-caret-right"></i>ver más</h3></div -->
 
             	</div>
-
-            	</a>
 	    	
 	    	</div>
 
@@ -273,7 +277,7 @@
 
 			            <li class="icon-jugador icono-6x">
 
-				            <p>
+				            <p class="color_principal">
 				            	<span class="count">
 				              		{{summary.participants_count}}	
 				              	</span>
@@ -290,7 +294,7 @@
 
 			            <li class="icon-copa icono-6x">
 
-				            <p>
+				            <p class="color_principal">
 				              	<span class="count">
 				              		{{summary.competitions.length || 0}}	
 				              	</span>
@@ -324,7 +328,7 @@
 
 			            <li class="icon-video icono-6x">
 
-				            <p>
+				            <p class="color_principal">
 					            <span class="count">
 				              		{{summary.videos_count || 0}}	
 					            </span>
@@ -460,7 +464,7 @@
 <!-- SEC: JUGADORES -->
 <div id="sec_jugadores" class="seccion fondo_gris" ng-show="summary.participants_count">
 
-    <div class="contenedor_sec torneo_info_inside">
+    <div class="contenedor_sec torneo_display">
 	    <div class="titulo wow fadeInDown">
 	      	<h2 class="sombra_gris_blanco">
 	        	<i class="icon-jugador"></i>Jugadores
@@ -469,8 +473,8 @@
 	    </div>
 
 	    <div class="ver_mas wow bounceInRight entrada-1s">
-	    	<a ng-href="/#/jugadores">
-	    		<h3><i class="fa fa-caret-right"></i>ver todos los jugadores</h3>
+	    	<a class="link_magico" ng-href="/#/jugadores">
+	    		<i class="fa fa-caret-right"></i>ver todos los jugadores
 	    	</a>
 	    </div>
 
@@ -635,7 +639,7 @@
 <!-- SEC: VIEDEO -->
 <div id="sec_videos" class="seccion fondo_gris" ng-show="summary.videos_count">
 
-    <div class="contenedor_sec torneo_info_inside">
+    <div class="contenedor_sec torneo_display">
 
 	    <div class="titulo wow fadeInDown">
 
@@ -651,9 +655,9 @@
 
 	    <div class="ver_mas wow bounceInRight entrada-1s5">
 
-	    	<a ng-href="/#/videos">
+	    	<a class="link_magico" ng-href="/#/videos">
 
-	    		<h3><i class="fa fa-caret-right"></i>ver todos los videos</h3>
+	    		<i class="fa fa-caret-right"></i>ver todos los videos
 	    	
 	    	</a>
 	    	

@@ -88,6 +88,8 @@ PÁGINAS INTERNAS:
 @color-amarillo:	#d4aa00;
 @color-fucsia:      #f3558a;
 
+@color-rojo2:       #ff4949; 
+
 
 @screen-sm-min:     768px;
 @screen-md-min:     992px; 
@@ -194,36 +196,7 @@ PÁGINAS INTERNAS:
 }
 
 
-
-a.btn_principal {
-
-    border-width: 3px;
-    
-    border-style: solid;
-    
-    border-radius: 0.4em;
-    
-    font-weight: 700;
-    
-    font-size: 18px;
-    
-    padding: 10px 25px;
-    
-    letter-spacing: 3px;
-
-    background-color: @color-principal;
-
-    color: @color-light !important;
-
-}
-
-
-a.btn.btn_principal:hover {
-
-    opacity: 0.8;
-
-}
-
+// Filtro de búsqueda 
 .busqueda {
 
     width: 35%;
@@ -233,7 +206,13 @@ a.btn.btn_principal:hover {
     margin-top: -2px;
 }
 
-/* ! Navigation Settings */
+
+
+/* ------------------------------
+
+    Navigation Settings 
+
+--------------------------------*/
 
 .navi_container {
 
@@ -323,13 +302,13 @@ nav {
 
 .navbar a {
 
-    -webkit-transition: all 1s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
 
-    -moz-transition: all 1s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
 
-    -o-transition: all 1s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
 
-    transition: all 1s ease-in-out;
+    transition: all 0.3s ease-in-out;
 
 }
 
@@ -387,9 +366,15 @@ nav {
 
 }
 
-// -------------------------- SLIDER -----------------------------------
+
+/* ------------------------------
+
+   SLIDER 
+
+---------------------------------*/
 
 #home_slider {
+
     .left_arrow, .right_arrow {
         top: 45%;
     }
@@ -449,10 +434,6 @@ nav {
 
     text-align: center;
 
-}
-
-// ??? todavía no entiendo para qué es esta clase ???
-.slide {
 }
 
 .description {
@@ -638,11 +619,15 @@ nav {
 
 body {
 
-  color: red;
+  //color: red;
 
 }
 
-// --------------------------- TOOLTIPS --------------------------------
+/* ------------------------------
+
+   TOOLTIPS 
+
+-------------------------------- */
 
 .tooltip.bottom .tooltip-arrow {
 
@@ -652,8 +637,6 @@ body {
 
   	margin-left: -5px;
 
-  	border-bottom-color: @color-principal;
-
   	border-width: 0 5px 5px;
 
   	opacity: 0.9;
@@ -662,11 +645,7 @@ body {
 
 .tooltip-inner {
 
-	color: @color-principal;
-
 	background: @color-light;
-
-	border: solid 1px @color-principal;
 
 	opacity: 0.9;
 
@@ -683,60 +662,44 @@ body {
 	font-size: 10pt;
 }
 
-// ESPACIO DE TÍTULO DE FICHAS INTERNAS
-.TIT-centrado {
 
-    width: 50%;
+/* ------------------------------
 
-    vertical-align: middle;
+   BOTONES 
 
-    padding: 20px 0;
-
-    //VALORES PARA DISPOSITIVOS GRANDES
-
-    .titulo {
-
-        padding-left: 2%;
-
-    }
-
-    .first_description {
-
-        padding-left: 18%;
-
-    }
-
-    //VALORES PARA DISPOSITIVOS PEQUEÑOS
-    @media (max-width: 992px) {
-
-        width: 100%;
-
-        display: block;
+-------------------------------- */
 
 
-        /* ESTO ES PARA FIRST_LINEE
-        .first_line {
+// BOTÓN DE PARTICIPAR
+a.btn_principal {
 
-            width: 8%;
+    border-width: 3px;
+    
+    border-style: solid;
+    
+    border-radius: 0.4em;
+    
+    font-weight: 700;
+    
+    font-size: 18px;
+    
+    padding: 10px 25px;
+    
+    letter-spacing: 3px;
 
-        }
+    color: @color-light !important;
 
-        .encabezado {
+    box-shadow: 4px 4px 0px #fff, 7px 7px 1px rgba(0, 0, 0, 0.1); 
 
-            padding-left: 1%;
-
-        }
-
-        .first_description {
-
-            padding-left: 9%;
-
-        }*/
-    }
 }
 
 
-// -------------------------- BOTONES -----------------------------------
+a.btn.btn_principal:hover {
+
+    opacity: 0.8;
+
+}
+
 
 .eventime_button,
 
@@ -907,7 +870,11 @@ body {
 }
 
 
-// --------------------------- OTROS -----------------------------------
+/* ------------------------------
+
+   OTROS 
+
+-------------------------------- */
 
 .gap {
 
@@ -962,8 +929,11 @@ body {
 }
 
 
-// --------------------------- ENCABEZADOS --------------------------------
+/* ------------------------------
 
+   ENCABEZADOS 
+
+-------------------------------- */
 
 @-moz-document url-prefix() {
 
@@ -1008,6 +978,58 @@ body {
 
     }
 
+}
+
+// ESPACIO DE TÍTULO DE FICHAS INTERNAS
+.TIT-centrado {
+
+    width: 50%;
+
+    vertical-align: middle;
+
+    padding: 20px 0;
+
+    //VALORES PARA DISPOSITIVOS GRANDES
+
+    .titulo {
+
+        padding-left: 2%;
+
+    }
+
+    .first_description {
+
+        padding-left: 18%;
+
+    }
+
+    //VALORES PARA DISPOSITIVOS PEQUEÑOS
+    @media (max-width: 992px) {
+
+        width: 100%;
+
+        display: block;
+
+
+        /* ESTO ES PARA FIRST_LINEE
+        .first_line {
+
+            width: 8%;
+
+        }
+
+        .encabezado {
+
+            padding-left: 1%;
+
+        }
+
+        .first_description {
+
+            padding-left: 9%;
+
+        }*/
+    }
 }
 
 // TÍTULOS DE TODAS LAS SECCIONES
@@ -1113,22 +1135,54 @@ body {
 
 // --------------------------- SECCIONES GENERAL -----------------------------------
 
+
+
+a {
+
+    &:hover {
+
+        //color: @color-gris; 
+
+        opacity: 0.6;
+
+        text-decoration: none;
+
+        //font-size: large; 
+    }
+
+}
+
+a.link_magico {
+
+    font-family: raleway-semi-bold;
+
+    font-weight: 400; 
+
+    font-size: 12pt; 
+
+    line-height: 14pt; 
+
+    //transition
+    transition-property: font-size;
+        
+    transition-duration: 0.1s;
+
+    transition-timing-function: linear;
+
+    &:hover {
+
+        font-size: 14pt; 
+    }
+}
+
+
+
+
 .seccion {
 
     margin-top: 0px;
 
     padding-top: 20px;
-
-    a {
-
-        color: @color-principal;
-
-        &:hover {
-
-            opacity: 0.6;
-        }
-
-    }
 
     .btn {
 
@@ -1146,26 +1200,11 @@ h4.pruebaaaaaaa {
     color: @color-principal;
 }
 
-.tab-content {
-
-    padding-top: 200px;
-}
-
 .tab-content h4{
 
     color: @color-dark !important;
 }
 
-a {
-    
-    .tarjeta_torneo, .resumen {
-
-        &:hover {
-
-            opacity: 1;
-        }
-    }
-}
 
 .icon-box {
 
@@ -1263,8 +1302,6 @@ a {
 
         padding-left: 20px;
 
-        color: @color-principal;
-
         font-size: 0.8em;
 
         font-family: raleway-semi-bold;
@@ -1284,7 +1321,7 @@ a {
 
             font-size: 1em;
 
-            transition: all 0.5s ease-in-out 0s;
+            transition: all 0.2s ease-in-out 0s;
 
             color: @color-light;
 
@@ -1349,19 +1386,46 @@ a {
 --------------------------------------------------------------------- */
 
 //settings generales para las fichas de torneos
-.torneo_info_inside {
+.torneo_display {
 
     color: @color-dark;
 
     font-family: raleway-light;
 
-    h4.torneo_nombre {
+    a {
 
-        font-size: 1.2em; 
+        .torneo_nombre {
 
-        font-family: raleway-semi-bold;
+            font-size: 24px; 
 
-        margin-top: 0;
+            line-height: 24pt; 
+
+            font-family: raleway-semi-bold;
+
+            margin-top: 0;
+
+            //overflow: 
+            white-space: nowrap;
+            
+            overflow: hidden;
+
+            text-overflow: elipsis; 
+
+            //transition: 
+            transition-property: font-size;
+                
+            transition-duration: 0.1s;
+      
+            transition-timing-function: linear;
+
+            &:hover {
+
+                font-size: 26px; 
+
+                text-decoration: none !important; 
+            }
+
+        }
 
     }
 
@@ -1679,11 +1743,12 @@ a {
 
     }
 
+    .t_nombre_container {
 
+        display: block;
 
-    h4.torneo_nombre {
+        padding: 20px 40px 10px 20px;
 
-        padding: 20px 40px 0px 20px;
     }
 
     .ver_mas {
@@ -1717,8 +1782,6 @@ a {
 
         vertical-align: middle;
 
-        background: @color-principal;
-
         color: @color-light;
 
         font-family: raleway-bold;
@@ -1744,7 +1807,20 @@ a {
         top: -10px;
 
         right: 8%;
+    }
 
+    &:hover {
+
+        /*
+        &:after {
+
+            width: 82px; 
+
+            height: 82px; 
+
+            padding: 14px; 
+        }
+        */
     }
 }
 
@@ -1812,6 +1888,8 @@ a {
     padding-left: 5px;
 
     padding-top: 10px;
+
+    padding-bottom: 20px; 
 
     border-left: 1px solid @color-gris-claro;
 
@@ -3505,493 +3583,6 @@ a {
         }
     }
 }
-
-
-
-
-
-
-
-
-/*----------------------------------------------------------------------
- 
-	20.
-	COLORES 
-
---------------------------------------------------------------------- */
-
-
-// -------------------------- color-principal --------------------------
-
-.navbar-nav>.active>a,
-
-.navbar ul li a.active,
-
-.navbar-nav>li>a:hover,
-
-.description #clock,
-
-.arrow_right:hover,
-
-.arrow_left:hover,
-
-.photo_carousel figure figcaption,
-
-.photo_carousel figure h2 span,
-
-.contact_icon,
-
-.footer .link:hover,
-
-a.navbar-brand:hover,
-
-.navbar_bg_dark .active a,
-
-.texticon, 
-
-.nav .open>a,
-
-.count,
-
-.count_plus,
-
-.about_columns .fa,
-
-.about_columns h4,
-
-.contact a, .entry-meta span a:hover,
-
-.copyright span{
-
-    color: @color-principal;
-
-}
-
-
-.eventime_button::before, .dropdown-menu li a:hover,
-
-.eventime_button:hover::before,
-
-.contact_icon:hover  {
-   
-    background: @color-principal;
-
-}
-
-.eventime_button,
-
-.eventime_button:hover,
-
-.first_line,
-
-#sh_carousel .carousel-indicators .active,
-
-.tabs_about .active a,
-
-.tabs_about .graybtn:hover,
-
-.schedule_date,
-
-.photo_carousel_ind.active,
-
-.testimonials_carousel,
-
-.contact_icon,
-
-.sponsor_basic,
-
-.sponsor_featured,
-
-figure.eventime_img figcaption::before,
-
-.eventime_modal .contact_icon:hover,
-
-.center_line {
-
-    border-color: @color-principal;
-
-}
-
-/* Gradients */
-
-.reservation,
-
-footer,
-
-.navbar-toggle{
-
-    background: @color-principal; /* Old browsers */
-    
-    background: -moz-linear-gradient(-45deg,  @color-principal 0%, #efa52d 100%); /* FF3.6+ */
-    
-    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,@color-principal), color-stop(100%,#efa52d)); /* Chrome,Safari4+ */
-    
-    background: -webkit-linear-gradient(-45deg,  @color-principal 0%,#efa52d 100%); /* Chrome10+,Safari5.1+ */
-    
-    background: -o-linear-gradient(-45deg,  @color-principal 0%,#efa52d 100%); /* Opera 11.10+ */
-    
-    background: -ms-linear-gradient(-45deg,  @color-principal 0%,#efa52d 100%); /* IE10+ */
-   
-    background: linear-gradient(135deg,  @color-principal 0%,#efa52d 100%); /* W3C */
-    
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='@color-principal', endColorstr='#efa52d',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-
-}
-
-
-/*!------ SVG ------ */
-
-.photo_carousel .right_arrow svg:hover,
-
-.photo_carousel .left_arrow svg:hover,
-
-#sh_carousel .right_arrow svg:hover,
-
-#sh_carousel .left_arrow svg:hover,
-
-.light .right_arrow svg:hover,
-
-.light .left_arrow svg:hover,
-
-#home_slider .left_arrow,
-
-#home_slider .right_arrow {
-
-    fill: @color-principal;
-
-}
-
-
-
-
-// --------------------------- color-light -----------------------------
-
-.sec-fondo-oscuro {
-
-	.navbar,
-
-	.navbar a,
-
-	.description h2,
-
-	.description h3,
-
-	.details,
-
-	.footer .link,
-
-	.tab-content,
-
-	.eventime_button,
-
-	.tabs_about .active a,
-
-	.mask .titulo,
-
-	.mask .first_description,
-
-	.photo_carousel figure h2,
-
-	.reservation_button:hover,
-
-	.reservation input[type=text]:focus,
-
-	.navbar_bg_dark a, .blog_header p,
-
-	.buttons a.active,
-
-	.contact_information,
-
-	.copyright {
-
-	    color: @color-light;
-
-	}
-}
-
-.sec-fondo-claro {
-
-	.navbar,
-
-	.navbar a,
-
-	.description h2,
-
-	.description h3,
-
-	.details,
-
-	.footer .link,
-
-	.tab-content,
-
-	.eventime_button,
-
-	.tabs_about .active a,
-
-	.mask .titulo,
-
-	.mask .first_description,
-
-	.photo_carousel figure h2,
-
-	.reservation_button:hover,
-
-	.reservation input[type=text]:focus,
-
-	.navbar_bg_dark a, .blog_header p,
-
-	.buttons a.active,
-
-	.contact_information,
-
-	.copyright {
-
-	    color: @color-dark;
-
-	}
-}
-
-.sponsor_basic,
-
-.sponsor_featured {
-
-    outline-color: @color-light;
-
-}
-
-.speakers_row {
-
-    background-color: @color-light;
-
-}
-
-
-.tabs_about .graybtn {
-
-    border-color: @color-light;
-
-}
-
-/*!------ SVG ------ */
-
-.photo_carousel .right_arrow svg,
-
-.photo_carousel .left_arrow svg,
-
-#home_slider .left_arrow:hover,
-
-#home_slider .right_arrow:hover {
-
-    fill: @color-light;
-
-}
-
-
-
-// -------------------------- color-fondo ------------------------------
-
-
-.sec-fondo-oscuro{
-	a,
-
-	a:hover,
-
-	.titulo,
-
-	.panel a,
-
-	.reservation,
-
-	.reservation_button,
-
-	.contact_icon:hover,
-
-	footer,
-
-	.navbar_bg .active a, .blog_button, 
-
-	.schedule_reservation,
-
-	.panel-collapse p b {
-
-	    color: @color-fondo;
-
-	}
-}
-
-
-
-.sec-fondo-claro{
-	a,
-
-	a:hover,
-
-	.titulo,
-
-	.panel a,
-
-	.reservation,
-
-	.reservation_button,
-
-	.contact_icon:hover,
-
-	footer,
-
-	.navbar_bg .active a, .blog_button, 
-
-	.schedule_reservation,
-
-	.panel-collapse p b {
-
-	    color: @color-dark;
-
-	}
-}
-
-.eventime_button:hover {
-
-    color: @color-fondo !important;
-
-}
-
-#preloader,
-
-.reservation_button:hover,
-
-.reservation input[type=text]:focus,
-
-.reservation input[type=submit]:hover,
-
-.navbar_bg_dark,
-
-.navbar-toggle .icon-bar {
-
-    background-color: @color-fondo;
-
-}
-
-.reservation .first_line,
-
-footer .first_line,
-
-.reservation input,
-
-.reservation_button  {
-
-    border-color: @color-fondo;
-
-}
-
-
-
-// -------------------------- color-gris -------------------------------
-
-.graybtn,
-
-.accordion_right,
-
-.photo_carousel_ind {
-
-    border-color: @color-gris;
-
-}
-
-/*!------ SVG ------ */
-#sh_carousel .right_arrow svg,
-
-#sh_carousel .left_arrow svg,
-
-.light .right_arrow svg,
-
-.light .left_arrow svg {
-
-    fill: @color-gris;
-
-}
-
-.graytxt,
-
-.panel-collapse p,
-
-.arrow_right,
-
-.arrow_left,
-
-.navbar_bg a {
-
-    color: @color-gris;
-
-}
-
-
-
-
-/*!------------------------------ Background settings | Transparents in RGBA and Background images ------------------------------*/
-
-.nav_mask,
-
-.footer {
-
-    background: rgba(0, 0, 0, 0.8);
-
-}
-
-.nav_mask_full {
-
-    background: rgba(0, 0, 0, 1);
-
-}
-
-.fill_mask {
-
-    background-color: rgba(0, 0, 0, 0.55);
-
-    background-image: url('../images/mask.svg');
-
-}
-
-.mask {
-
-    background-color: rgba(0, 0, 0, 0.55);
-
-    background-image: url('../images/mask.svg');
-
-}
-
-/*Images*/
-
-.speakers_image {
-
-    background-image: url('../images/featured_speaker.jpg');
-
-}
-
-.first_image:empty,
-
-.first_image {
-
-    background-image: url('../images/first.jpg');
-
-}
-
-
-.speakers {
-
-    background-image: url('../images/bg_speakers.jpg');
-
-}
-
-.contact {
-
-    background-image: url('../images/bg_contact.jpg');
-
-}
-
-
-
-
 
 
 

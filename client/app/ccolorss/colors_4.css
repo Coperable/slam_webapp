@@ -6,11 +6,76 @@ Version:    1.2
 Last change:    3 apr 2015
 Assigned to:    http://themeforest.net/user/chaykovskiy
 Primary use:    Eventime HTML Template 
--------------------------------------------------------------------*/
+-------------------------------------------------------------------
+
+ Main color of template #ad69c2 
+
+    > MENDOZA
+
+ ------------------------------------------------------------------- */
+
+
+a, a:hover, a.contact_icon, .navbar a:hover {
+
+    color: #bb69c2; 
+}
+
+a.btn_principal {
+
+    background-color: #ad69c2;
+}
+
+.fondo_gris .eventime_button {
+
+        color: #ad69c2; 
+}
+
+.label_region {
+
+    color: #ad69c2;
+}
+
+.tarjeta_torneo::after {
+
+    background: #ad69c2;
+}
+
+.selector_region a#dLabel {
+
+    color: #ad69c2;
+}
+
+.color_principal {
+
+    color: #ad69c2;
+}
+
+.input-group-addon {
+
+    background-color: #ad69c2;
+
+    border: 0px solid #ad69c2;
+}
+
+.tooltip.bottom .tooltip-arrow {
+
+    border-bottom-color: #ad69c2;
+}
+
+.tooltip-inner {
+
+    color: #ad69c2;
+
+    border: solid 1px #ad69c2;
+
+}
 
 
 
-/*!------------------------------ Main color of template #c37cff ------------------------------*/
+
+
+// -----------------------------------------------------
+
 
 .navbar-nav>.active>a,
 
@@ -36,6 +101,7 @@ a.navbar-brand:hover,
 
 .navbar_bg_dark .active a,
 
+
 .texticon, .nav .open>a,
 
 .count,
@@ -50,7 +116,7 @@ a.navbar-brand:hover,
 
 .copyright span{
 
-    color: #c37cff;
+    color: #ad69c2;
 
 }
 
@@ -61,7 +127,7 @@ a.navbar-brand:hover,
 
 .contact_icon:hover  {
    
-    background: #c37cff;
+    background: #ad69c2;
 
 }
 
@@ -95,7 +161,7 @@ figure.eventime_img figcaption::before,
 
 .center_line {
 
-    border-color: #c37cff;
+    border-color: #ad69c2;
 
 }
 
@@ -107,23 +173,22 @@ footer,
 
 .navbar-toggle{
 
-    background: #c37cff;
+    background: #ad69c2;
   
-    background: -moz-linear-gradient(-45deg,  #c37cff 0%, #e09d6d 100%);
+    background: -moz-linear-gradient(-45deg,  #ad69c2 0%, #e55e74 100%);
    
-    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#c37cff), color-stop(100%,#e09d6d));
+    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#ad69c2), color-stop(100%,#e55e74));
   
-    background: -webkit-linear-gradient(-45deg,  #c37cff 0%,#e09d6d 100%);
+    background: -webkit-linear-gradient(-45deg,  #ad69c2 0%,#e55e74 100%);
    
-    background: -o-linear-gradient(-45deg,  #c37cff 0%,#e09d6d 100%);
+    background: -o-linear-gradient(-45deg,  #ad69c2 0%,#e55e74 100%);
+   
+    background: -ms-linear-gradient(-45deg,  #ad69c2 0%,#e55e74 100%);
+   
+    background: linear-gradient(135deg,  #ad69c2 0%,#e55e74 100%);
+   
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ad69c2', endColorstr='#e55e74',GradientType=1 );
   
-    background: -ms-linear-gradient(-45deg,  #c37cff 0%,#e09d6d 100%);
-  
-    background: linear-gradient(135deg,  #c37cff 0%,#e09d6d 100%);
-  
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c37cff', endColorstr='#e09d6d',GradientType=1 );
-
-
 }
 
 
@@ -145,7 +210,7 @@ footer,
 
 #home_slider .right_arrow {
 
-    fill: #c37cff;
+    fill: #ad69c2;
 
 }
 
@@ -237,12 +302,6 @@ footer,
 
 /*!------------------------------ Black color #000 ------------------------------*/
 
-
-
-
-a,
-
-a:hover,
 
 .first_title,
 
@@ -413,18 +472,3 @@ footer .first_line,
     background-image: url('../images/bg_contact.jpg');
 
 }
-
-/*---------------------- Additional Styles ---------------------*/
-
-
-.sponsor_featured, 
-
-.sponsor_basic {
-
-    outline: none !important;
-
-    border: 3px solid #000 !important;
-
-    background: transparent !important;
-
-} 

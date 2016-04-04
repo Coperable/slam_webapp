@@ -1,6 +1,6 @@
 <div class="gap"></div>
 <div id="sec_torneoPrincipal" class="seccion fondo_claro"  ng-if="summary.next_competition">
-    <div class="contenedor_sec torneo_principal torneo_info_inside">
+    <div class="contenedor_sec torneo_principal torneo_display">
 	    <div class="titulo">
 	      	<h2 class="en_color_principal sombra_blanco_gris">
 	        	<i class="icon-copa"></i>Próximos Torneos
@@ -57,7 +57,7 @@
 
         <div class="col-xs-10 col-sm-5 col-md-4" ng-repeat="next in summary.next_competitions" ng-if="next.id != summary.next_competition.id">
             <a ng-href="/#/torneo/{{next.id}}" class="no_opacity_hover">
-            <div class="tarjeta_torneo torneo_info_inside" fecha="{{next.event_date | moment: 'DD MMM'}}">
+            <div class="tarjeta_torneo torneo_display" fecha="{{next.event_date | moment: 'DD MMM'}}">
                 <h4 class="torneo_nombre">{{next.title}}</h4>
                 <div class="torneo_resumen">
                     <div class="data-box">
@@ -114,7 +114,7 @@
 
 <!-- SEC: TORNEOS ANTERIORES -->
 <div id="sec_torneosAnteriores" class="seccion fondo_gris">
-    <div class="contenedor_sec torneo_info_inside">
+    <div class="contenedor_sec torneo_display">
 	    <div class="titulo ">
 	      	<h2 class="sombra_gris_blanco">
 	        	<i class="icon-copa"></i>Torneos Anteriores
@@ -139,7 +139,7 @@
     	<div class="row">
     		<div class="col-xs-10 col-sm-5 col-md-4" ng-repeat="past in summary.past_competitions">
     			<a ng-href="/#/torneo/{{past.id}}" class="no_opacity_hover">
-                    <div class="tarjeta_torneo torneo_info_inside" fecha="{{past.event_date | moment: 'DD MMM'}}">
+                    <div class="tarjeta_torneo torneo_display" fecha="{{past.event_date | moment: 'DD MMM'}}">
                         <h4 class="torneo_nombre">{{past.title}}</h4>
                         <div class="torneo_resumen">
                             <div class="data-box">

@@ -6,11 +6,76 @@ Version:    1.2
 Last change:    3 apr 2015
 Assigned to:    http://themeforest.net/user/chaykovskiy
 Primary use:    Eventime HTML Template 
--------------------------------------------------------------------*/
+-------------------------------------------------------------------
+
+ Main color of template #ffae11 
+
+    > CABA y GBA
+
+ ------------------------------------------------------------------- */
+
+
+a, a:hover, a.contact_icon, .navbar a:hover {
+
+    color: #ffae11; 
+}
+
+a.btn_principal {
+
+    background-color: #ffae11;
+}
+
+.fondo_gris .eventime_button {
+
+        color: #ffae11; 
+}
+
+.label_region {
+
+    color: #ffae11;
+}
+
+.tarjeta_torneo::after {
+
+    background: #ffae11;
+}
+
+.selector_region a#dLabel {
+
+    color: #ffae11;
+}
+
+.color_principal {
+
+    color: #ffae11;
+}
+
+.input-group-addon {
+
+    background-color: #ffae11;
+
+    border: 0px solid #ffae11;
+}
+
+.tooltip.bottom .tooltip-arrow {
+
+    border-bottom-color: #ffae11;
+}
+
+.tooltip-inner {
+
+    color: #ffae11;
+
+    border: solid 1px #ffae11;
+
+}
 
 
 
-/*!------------------------------ Main color of template #ffae11 ------------------------------*/
+
+
+// -----------------------------------------------------
+
 
 .navbar-nav>.active>a,
 
@@ -110,21 +175,20 @@ footer,
 
     background: #ffae11;
   
-    background: -moz-linear-gradient(-45deg,  #ffae11 0%, #ff8665 100%);
+    background: -moz-linear-gradient(-45deg,  #ffae11 0%, #e55e74 100%);
    
-    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#ffae11), color-stop(100%,#ff8665));
+    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#ffae11), color-stop(100%,#e55e74));
   
-    background: -webkit-linear-gradient(-45deg,  #ffae11 0%,#ff8665 100%);
+    background: -webkit-linear-gradient(-45deg,  #ffae11 0%,#e55e74 100%);
    
-    background: -o-linear-gradient(-45deg,  #ffae11 0%,#ff8665 100%);
+    background: -o-linear-gradient(-45deg,  #ffae11 0%,#e55e74 100%);
+   
+    background: -ms-linear-gradient(-45deg,  #ffae11 0%,#e55e74 100%);
+   
+    background: linear-gradient(135deg,  #ffae11 0%,#e55e74 100%);
+   
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffae11', endColorstr='#e55e74',GradientType=1 );
   
-    background: -ms-linear-gradient(-45deg,  #ffae11 0%,#ff8665 100%);
-  
-    background: linear-gradient(135deg,  #ffae11 0%,#ff8665 100%);
-  
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffae11', endColorstr='#ff8665',GradientType=1 );
-
-
 }
 
 
@@ -238,12 +302,6 @@ footer,
 
 /*!------------------------------ Black color #000 ------------------------------*/
 
-
-
-
-a,
-
-a:hover,
 
 .first_title,
 
@@ -414,18 +472,3 @@ footer .first_line,
     background-image: url('../images/bg_contact.jpg');
 
 }
-
-/*---------------------- Additional Styles ---------------------*/
-
-
-.sponsor_featured, 
-
-.sponsor_basic {
-
-    outline: none !important;
-
-    border: 3px solid #000 !important;
-
-    background: transparent !important;
-
-} 
