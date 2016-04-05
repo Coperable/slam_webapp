@@ -132,9 +132,9 @@
 
     			<div class="tarjeta_torneo torneo_display" fecha="{{past.event_date | moment: 'DD MMM'}}">
                  	
-                    <div class="t_nombre_container">
+                    <div class="torneo_nombre_container single_line">
 
-                    	<a ng-href="/#/torneo/{{past.id}}" class="no_opacity_hover"><span class="torneo_nombre">{{past.title}}</span></a>
+                    	<a class="torneo_nombre" ng-href="/#/torneo/{{past.id}}" class="no_opacity_hover">{{past.title}}</a>
                     
                     </div>
 
@@ -184,17 +184,9 @@
 
                 	<div class="torneo_datos">
 
-                		<div class="torneo_fecha">
-
-							<span class="icon-box" ><i class="fa fa-clock-o"></i></span>
-
-							<span class="hora">{{past.event_date | moment: 'HH:mm'}}</span>
-						
-						</div>
-
 						<div class="torneo_lugar">
 						
-							<span class="icon-box" ><i class="fa fa-map-marker"></i></span>
+							<i class="fa fa-map-marker fa-fw"></i>
 
 							<span class="lugar-nombre">{{past.place}}</span>
 
@@ -202,11 +194,17 @@
 
 						</div>
 
-						<div class="torneo_hashtag">
-							
-							<span class="icon-box">#</span>
+                		<!--div class="torneo_fecha">
 
-							<span class="aclaracion">{{past.hashtag}}</span>
+							<i class="fa fa-clock-o fa-fw"></i>
+
+							<span class="hora">{{past.event_date | moment: 'HH:mm'}}</span>
+						
+						</div-->
+
+						<div class="torneo_hashtag">
+
+							<span class="aclaracion"><strong>#</strong>{{past.hashtag}}</span>
 
 						</div>
 

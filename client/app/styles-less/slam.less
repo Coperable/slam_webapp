@@ -1143,7 +1143,7 @@ a {
 
         //color: @color-gris; 
 
-        opacity: 0.6;
+        //opacity: 0.6;
 
         text-decoration: none;
 
@@ -1385,6 +1385,125 @@ h4.pruebaaaaaaa {
 
 --------------------------------------------------------------------- */
 
+
+.torneo_nombre_container {
+
+    font-size: 17pt; 
+
+    line-height: 21pt; 
+
+    font-family: raleway-semi-bold;
+
+    display: block;
+
+    padding: 20px 40px 10px 20px;
+
+    height: 60px; 
+
+    z-index: 20000; 
+
+    &.single_line {
+
+        //overflow: 
+        white-space: nowrap;
+        
+        overflow: hidden;
+
+        text-overflow: ellipsis; 
+
+    }
+
+}
+
+.torneo_nombre {
+
+    //margin-top: 0;
+
+}
+
+a.torneo_nombre {
+
+    //ransition: 
+    transition-property: font-size;
+        
+    transition-duration: 0.1s;
+
+    transition-timing-function: linear;
+
+    &:hover {
+
+        font-size: 21pt; 
+
+        text-decoration: none !important; 
+    }
+}
+
+.torneo_lugar {
+
+    margin-bottom: 10px;
+
+    max-height: 66px; 
+
+    .lugar-nombre {
+
+        font-size: 1em;
+
+        font-family: raleway-semi-bold;
+
+        display: inline-block;    
+
+        width: 75%;
+        
+        vertical-align: middle;
+        
+        line-height: 1.1;
+
+    }
+
+    .direccion {
+
+        display: block;
+        
+        margin-left: 5px;
+
+        font-size: 10pt; 
+    }
+
+}
+
+.torneo_descripcion {
+
+    font-size: 14px;
+
+    border-left: 1px solid @color-gris-claro;
+
+    padding-left: 26px;
+
+}
+
+.torneo_hashtag {
+
+    overflow: hidden;
+
+    font-size: 1em;
+
+    font-family: raleway-semi-bold;
+
+    span {
+
+        white-space: nowrap;
+
+        text-overflow: ellipsis; 
+
+        margin-left: 6px; 
+    
+    }
+
+}
+
+
+
+
 //settings generales para las fichas de torneos
 .torneo_display {
 
@@ -1392,59 +1511,7 @@ h4.pruebaaaaaaa {
 
     font-family: raleway-light;
 
-    a {
-
-        .torneo_nombre {
-
-            font-size: 24px; 
-
-            line-height: 24pt; 
-
-            font-family: raleway-semi-bold;
-
-            margin-top: 0;
-
-            //overflow: 
-            white-space: nowrap;
-            
-            overflow: hidden;
-
-            text-overflow: elipsis; 
-
-            //transition: 
-            transition-property: font-size;
-                
-            transition-duration: 0.1s;
-      
-            transition-timing-function: linear;
-
-            &:hover {
-
-                font-size: 26px; 
-
-                text-decoration: none !important; 
-            }
-
-        }
-
-    }
-
-    p {
-
-        //font-size: 0.8em;
-
-        //text-transform: lowercase;
-    }
-
-    .torneo_descripcion {
-
-        font-size: 14px;
-
-        border-left: 1px solid @color-gris-claro;
-
-        padding-left: 26px;
-
-    }
+    
 
     .torneo_fecha {
 
@@ -1487,72 +1554,6 @@ h4.pruebaaaaaaa {
 
     }
 
-    .torneo_lugar {
-
-        padding-top: 20px;
-
-        .lugar-nombre {
-
-            font-size: 1em;
-
-            font-family: raleway-semi-bold;
-
-            display: inline-block;    
-
-            width: 75%;
-            
-            vertical-align: middle;
-            
-            line-height: 1.1;
-
-        }
-
-        .direccion {
-
-            display: block;
-            
-            margin-left: 34px;
-
-            font-size: 0.9em;
-        }
-
-    }
-
-    .torneo_hashtag {
-
-        //border-top: 1px solid rgba(0, 0, 0, 0.1);
-
-        //padding-top: 20px;
-
-        font-size: 14pt;
-
-        font-family: raleway-semi-bold;
-
-        span {
-
-            //margin-left: 20px;
-
-        }
-
-        .icon-box {
-
-            font-family: Raleway-Bold;
-
-        }
-
-        .aclaracion {
-
-            font-family: raleway;
-
-            //margin-left: 30px;
-            
-            font-size: 10pt;
-            
-            //display: inline-block;
-        
-        }
-
-    }
 
     .fb-event {
 
@@ -1743,13 +1744,6 @@ h4.pruebaaaaaaa {
 
     }
 
-    .t_nombre_container {
-
-        display: block;
-
-        padding: 20px 40px 10px 20px;
-
-    }
 
     .ver_mas {
 
@@ -1821,6 +1815,11 @@ h4.pruebaaaaaaa {
             padding: 14px; 
         }
         */
+    }
+
+    .torneo_nombre_container {
+
+        width: 80%; 
     }
 }
 
